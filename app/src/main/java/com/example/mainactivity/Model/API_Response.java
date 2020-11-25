@@ -11,7 +11,7 @@ public class API_Response {
     private CurrentData currentdata;
 
 
-    public Current getWeather(){
+    public Current getCurrent(){
         return new Current(currentdata.CO2_value,currentdata.Temp_value,currentdata.Humidity_value,currentdata.Passenger_value);
     }
 
