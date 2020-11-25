@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">MainActivity</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_text_1">Home</string>
+    <string name="tab_text_2">Forecast</string>
+    <string name="tab_text_3">Logs</string>
+    <string name="tab_text_4">Warnings</string>
 </resources>
