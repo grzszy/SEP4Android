@@ -7,7 +7,7 @@ import com.example.mainactivity.Model.Current;
 import com.example.mainactivity.Model.Forcast;
 import com.example.mainactivity.Model.Log;
 import com.example.mainactivity.Model.Warning;
-import com.example.mainactivity.View.Forecast_Fragment;
+
 
 public class Home_Repository {
     private static Home_Repository instance;
