@@ -6,6 +6,6 @@ import retrofit2.http.Query;
 
 public interface API_Interface {
 
-    @GET("current.json")
-    Call<API_Response> getWeather(String current);
+    @GET("")
+    Call<API_Response> getCurrent(String current);
 }
