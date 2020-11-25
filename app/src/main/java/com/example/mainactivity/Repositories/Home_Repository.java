@@ -43,6 +43,9 @@ public class Home_Repository {
             @Override
             public void onFailure(Call<API_Response> call, Throwable t) {
                 Log.i("Retrofit2", "Something went wrong in the API!");
+                t.getMessage();
+                t.printStackTrace();
+                t.getCause();
             }
         });
     }
