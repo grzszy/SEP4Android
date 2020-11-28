@@ -30,9 +30,9 @@ public class Home_Repository {
         return current;
     }
 
-    public void updateCurrent(Current nCurrent){
+    public void updateCurrent(){
         API_Interface androidAPI = ServiceGenerator.getAPI();
-        Call<API_Response> call = androidAPI.getCurrent(nCurrent);
+        Call<API_Response> call = androidAPI.getCurrent();
 
         call.enqueue(new Callback<API_Response>() {
             public void onResponse(Call<API_Response> call, Response<API_Response> response) {

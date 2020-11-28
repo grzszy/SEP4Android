@@ -5,6 +5,6 @@ import retrofit2.http.GET;
 
 public interface API_Interface {
 
-    @GET("")
-    Call<API_Response> getCurrent(Current nCurrent);
+    @GET("DataValues")
+    Call<API_Response> getCurrent();
 }
