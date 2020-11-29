@@ -11,14 +11,14 @@ import androidx.fragment.app.Fragment;
 
 import com.example.mainactivity.R;
 
-public class Log_Fragment extends Fragment {
 
+
+public class Log_Fragment extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.log_fragment,container,false);
-
 
 
 

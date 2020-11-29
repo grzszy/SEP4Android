@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -32,6 +33,11 @@ public class Home_Fragment extends Fragment {
 
     Button buttonUpdate;
 
+    TextView textViewTemp;
+    TextView textViewHumidity;
+    TextView textViewCO2;
+    TextView textViewPeople;
+
 
     @Nullable
     @Override
@@ -47,6 +53,10 @@ public class Home_Fragment extends Fragment {
         seekBarVentilator = v.findViewById(R.id.seekBarVentilator);
         buttonUpdate = v.findViewById(R.id.buttonUpdate);
 
+        textViewTemp = v.findViewById(R.id.textViewTemp);
+        textViewHumidity = v.findViewById(R.id.textViewHumidity);
+        textViewCO2 = v.findViewById(R.id.textViewCO2);
+        textViewPeople = v.findViewById(R.id.textViewPeople);
 
         buttonUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,7 +65,7 @@ public class Home_Fragment extends Fragment {
             }
         });
 
-        progressBarCO2.setMax(400);
+        progressBarCO2.setMax(2000);
         progressBarTemp.setMax(60);
         progressBarHumidity.setMax(100);
         progressBarPeople.setMax(200);
@@ -66,11 +76,15 @@ public class Home_Fragment extends Fragment {
             public void onChanged(Current current) {
 
 
-
-                Home_Fragment.this.progressBarCO2.setProgress(current.getCO2_value());
                 Home_Fragment.this.progressBarTemp.setProgress((int) current.getTemp_value());
                 Home_Fragment.this.progressBarHumidity.setProgress((int) current.getHumidity_value());
+                Home_Fragment.this.progressBarCO2.setProgress(current.getCO2_value());
                 Home_Fragment.this.progressBarPeople.setProgress(current.getPassenger_value());
+
+                Home_Fragment.this.textViewTemp.setText(current.getTemp_value() + "");
+                Home_Fragment.this.textViewHumidity.setText(current.getHumidity_value() + "%");
+                Home_Fragment.this.textViewCO2.setText(current.getCO2_value() + "");
+                Home_Fragment.this.textViewPeople.setText(current.getPassenger_value() + "");
 
             }
         });
