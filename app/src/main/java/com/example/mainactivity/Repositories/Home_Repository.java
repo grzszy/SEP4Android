@@ -1,6 +1,8 @@
 package com.example.mainactivity.Repositories;
 
 import android.util.Log;
+
+import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import com.example.mainactivity.Model.API_Interface;
@@ -14,7 +16,7 @@ import retrofit2.Response;
 
 public class Home_Repository {
     private static Home_Repository instance;
-    private final MutableLiveData<Current> current;
+    private MutableLiveData<Current> current;
     private Home_Repository() {
         current = new MutableLiveData<>();
     }
@@ -35,9 +37,11 @@ public class Home_Repository {
         Call<API_Response> call = androidAPI.getCurrent();
 
         call.enqueue(new Callback<API_Response>() {
-            public void onResponse(Call<API_Response> call, Response<API_Response> response) {
-                if (response.code() == 200){
+            @Override
+            public void onResponse(Call<API_Response> call,Response<API_Response> response) {
+                if (response.code() == 200 && response.isSuccessful()){
                     current.setValue(response.body().getCurrent());
+
                 }
             }
             @Override

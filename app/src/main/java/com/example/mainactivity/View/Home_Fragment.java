@@ -47,6 +47,7 @@ public class Home_Fragment extends Fragment {
         seekBarVentilator = v.findViewById(R.id.seekBarVentilator);
         buttonUpdate = v.findViewById(R.id.buttonUpdate);
 
+
         buttonUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,7 +55,10 @@ public class Home_Fragment extends Fragment {
             }
         });
 
-
+        progressBarCO2.setMax(400);
+        progressBarTemp.setMax(60);
+        progressBarHumidity.setMax(100);
+        progressBarPeople.setMax(200);
 
         home_viewModel = new ViewModelProvider(this).get(Home_ViewModel.class);
         home_viewModel.getCurrent().observe(getActivity(), new Observer<Current>() {
