@@ -74,10 +74,6 @@ public class Home_Fragment extends Fragment {
                     home_viewModel.updateCurrent();
                 }
 
-                progressBarTemp.setProgress(20);
-                progressBarCO2.setProgress(1200);
-                progressBarHumidity.setProgress(40);
-                progressBarPeople.setProgress(30);
 
                 if (progressBarTemp != null ){
 
