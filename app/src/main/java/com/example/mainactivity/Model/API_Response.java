@@ -24,10 +24,18 @@ public class API_Response {
     @Expose
     private int numberOfPassengers_value;
 
+    @SerializedName("shaft")
+    @Expose
+    private int shaft;
 
     public Current getCurrent(){
 
         return new Current(CO2_value,temperature_value,humidity_value,numberOfPassengers_value);
+    }
+
+
+    public Shaft postShaft(){
+        return new Shaft(shaft);
     }
 
 

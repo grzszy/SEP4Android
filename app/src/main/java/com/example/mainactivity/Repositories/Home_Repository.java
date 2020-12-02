@@ -9,6 +9,8 @@ import com.example.mainactivity.Model.API_Interface;
 import com.example.mainactivity.Model.API_Response;
 import com.example.mainactivity.Model.Current;
 import com.example.mainactivity.Model.ServiceGenerator;
+import com.example.mainactivity.Model.Shaft;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -17,6 +19,7 @@ import retrofit2.Response;
 public class Home_Repository {
     private static Home_Repository instance;
     private MutableLiveData<Current> current;
+    private MutableLiveData<Shaft> shaft;
     private Home_Repository() {
         current = new MutableLiveData<>();
     }
@@ -32,6 +35,10 @@ public class Home_Repository {
         return current;
     }
 
+    public LiveData<Shaft> postShaft(){
+        return shaft;
+    }
+
     public void updateCurrent(){
         API_Interface androidAPI = ServiceGenerator.getAPI();
         Call<API_Response> call = androidAPI.getCurrent();
@@ -41,6 +48,29 @@ public class Home_Repository {
             public void onResponse(Call<API_Response> call,Response<API_Response> response) {
                 if (response.code() == 200 && response.isSuccessful()){
                     current.setValue(response.body().getCurrent());
+
+                }
+            }
+            @Override
+            public void onFailure(Call<API_Response> call, Throwable t) {
+                Log.i("Retrofit2", "Something went wrong in the API!");
+                t.getMessage();
+                t.printStackTrace();
+                t.getCause();
+
+            }
+        });
+    }
+
+    public void updateShaft(){
+        API_Interface androidAPI = ServiceGenerator.getAPI();
+        Call<API_Response> call = androidAPI.postShaft(shaft);
+
+        call.enqueue(new Callback<API_Response>() {
+            @Override
+            public void onResponse(Call<API_Response> call,Response<API_Response> response) {
+                if (response.code() == 200 && response.isSuccessful()){
+                    Log.i("Retrofit2", "onResponse: Success!");
 
                 }
             }
