@@ -34,8 +34,8 @@ public class API_Response {
     }
 
 
-    public Shaft postShaft(boolean status){
-        return new Shaft(status);
+    public Shaft postShaft(boolean action){
+        return new Shaft(action);
     }
 
 

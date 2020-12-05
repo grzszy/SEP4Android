@@ -12,6 +12,6 @@ public interface API_Interface {
     @GET("DataValues")
     Call<API_Response> getCurrent();
 
-    @POST("/Post action")
-    Call<API_Response> postShaft(@Body boolean status);
+    @POST("/PostAction")
+    Call<API_Response> postShaft(@Body boolean action);
 }
