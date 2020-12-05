@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.mainactivity.Model.Current;
-import com.example.mainactivity.Model.Shaft;
 import com.example.mainactivity.Repositories.Home_Repository;
 
 public class Home_ViewModel extends ViewModel {
@@ -19,14 +18,7 @@ public class Home_ViewModel extends ViewModel {
         return home_repository.getCurrent();
     }
 
-    public LiveData<Shaft> postShaft(){
-       return home_repository.postShaft();
-    }
     public void updateCurrent(){
         home_repository.updateCurrent();
-    }
-
-    public void updateShaft(){
-        home_repository.updateShaft();
     }
 }

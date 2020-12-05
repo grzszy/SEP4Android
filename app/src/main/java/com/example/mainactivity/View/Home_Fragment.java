@@ -6,8 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,17 +21,19 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.mainactivity.Model.Current;
 import com.example.mainactivity.R;
 import com.example.mainactivity.ViewModel.Home_ViewModel;
+import com.example.mainactivity.ViewModel.Shaft_ViewModel;
 
 public class Home_Fragment extends Fragment {
 
     Home_ViewModel home_viewModel;
-
+    Shaft_ViewModel shaft_viewModel;
     ProgressBar progressBarTemp;
     ProgressBar progressBarHumidity;
     ProgressBar progressBarCO2;
     ProgressBar progressBarPeople;
 
-    SeekBar seekBarShaft;
+    Switch shaft_switch;
+    //SeekBar seekBarShaft;
     SeekBar seekBarVentilator;
 
     Button buttonUpdate;
@@ -41,6 +45,8 @@ public class Home_Fragment extends Fragment {
 
     Current currentTemp;
 
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -51,7 +57,7 @@ public class Home_Fragment extends Fragment {
         progressBarCO2 = v.findViewById(R.id.progressBarCO2);
         progressBarPeople = v.findViewById(R.id.progressBarPeople);
 
-        seekBarShaft = v.findViewById(R.id.seekBarShaft);
+        //seekBarShaft = v.findViewById(R.id.seekBarShaft);
         seekBarVentilator = v.findViewById(R.id.seekBarVentilator);
         buttonUpdate = v.findViewById(R.id.buttonUpdate);
 
@@ -119,7 +125,21 @@ public class Home_Fragment extends Fragment {
 
             }
         });
-        
+
+        // implementing a switch
+
+        shaft_switch = (Switch) shaft_switch.findViewById(R.id.shaft_switch);
+        shaft_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b){
+                    shaft_viewModel.;
+                }
+                else{
+                    System.out.println("0");
+                }
+            }
+        });
         return v;
     }
 }

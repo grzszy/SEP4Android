@@ -2,9 +2,9 @@ package com.example.mainactivity.Repositories;
 
 import android.util.Log;
 
-import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+
 import com.example.mainactivity.Model.API_Interface;
 import com.example.mainactivity.Model.API_Response;
 import com.example.mainactivity.Model.Current;
@@ -20,7 +20,7 @@ public class Home_Repository {
     private static Home_Repository instance;
     private MutableLiveData<Current> current;
     private MutableLiveData<Shaft> shaft;
-    private Home_Repository() {
+    Home_Repository() {
         current = new MutableLiveData<>();
     }
 
