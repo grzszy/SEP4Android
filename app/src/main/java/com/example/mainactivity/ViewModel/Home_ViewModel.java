@@ -21,7 +21,11 @@ public class Home_ViewModel extends ViewModel {
 
     public void postShaft(boolean status){
 
-       home_repository.postShaft(status);
+       if (status){
+           home_repository.postShaft(true);
+        }
+       else
+           home_repository.postShaft(false);
     }
     public void updateCurrent(){
         home_repository.updateCurrent();

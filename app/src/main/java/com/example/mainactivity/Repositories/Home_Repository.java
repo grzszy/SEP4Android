@@ -38,7 +38,7 @@ public class Home_Repository {
 
     public void postShaft(boolean status) {
         API_Interface androidAPI = ServiceGenerator.getAPI();
-        Call<API_Response> call = androidAPI.postShaft(shaft);
+        Call<API_Response> call = androidAPI.postShaft(status);
         System.out.println("POST: Shaft posted.");
     }
 

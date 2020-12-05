@@ -31,7 +31,7 @@ public class Home_Fragment extends Fragment {
     ProgressBar progressBarCO2;
     ProgressBar progressBarPeople;
 
-    SeekBar seekBarShaft;
+
     SeekBar seekBarVentilator;
 
     Button buttonUpdate;
@@ -55,7 +55,7 @@ public class Home_Fragment extends Fragment {
         progressBarCO2 = v.findViewById(R.id.progressBarCO2);
         progressBarPeople = v.findViewById(R.id.progressBarPeople);
 
-        //seekBarShaft = v.findViewById(R.id.seekBarShaft);
+        shaft_switch = v.findViewById(R.id.shaft_switch);
         seekBarVentilator = v.findViewById(R.id.seekBarVentilator);
         buttonUpdate = v.findViewById(R.id.buttonUpdate);
 
@@ -132,7 +132,15 @@ public class Home_Fragment extends Fragment {
         shaft_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                home_viewModel.postShaft(b);
+
+                if (b)
+                {
+                    home_viewModel.postShaft(b);
+                }
+                else
+                {
+                    home_viewModel.postShaft(false);
+                }
                ;
             }
         });
