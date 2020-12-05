@@ -1,12 +1,23 @@
 package com.example.mainactivity.Model;
 
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ServiceGenerator {
+/**
+    private static OkHttpClient client = new OkHttpClient.Builder()
+            .connectTimeout(100, TimeUnit.SECONDS)
+            .readTimeout(100,TimeUnit.SECONDS).build();
+**/
     private static Retrofit.Builder retrofitBuilder = new Retrofit.Builder()
-            .baseUrl("")
+
+            .baseUrl("http://178.155.241.176:8080/")
             .addConverterFactory(GsonConverterFactory.create());
+
+
 
     private static Retrofit retrofit = retrofitBuilder.build();
 

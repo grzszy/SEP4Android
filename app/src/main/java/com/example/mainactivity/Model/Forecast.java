@@ -1,4 +1,4 @@
 package com.example.mainactivity.Model;
 
-public class Forcast {
+public class Forecast {
 }
