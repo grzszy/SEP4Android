@@ -26,11 +26,11 @@ public class API_Response {
 
     @SerializedName("shaft")
     @Expose
-    private boolean shaft;
+    private int shaft;
 
     public Current getCurrent(){
 
-        return new Current(CO2_value,temperature_value,humidity_value,numberOfPassengers_value);
+        return new Current(CO2_value,temperature_value,humidity_value,numberOfPassengers_value, shaft);
     }
 
 

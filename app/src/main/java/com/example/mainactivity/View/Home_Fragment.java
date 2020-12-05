@@ -105,6 +105,7 @@ public class Home_Fragment extends Fragment {
 
 
 
+
         home_viewModel = new ViewModelProvider(this).get(Home_ViewModel.class);
         home_viewModel.getCurrent().observe(getActivity(), new Observer<Current>() {
             @Override
@@ -129,6 +130,7 @@ public class Home_Fragment extends Fragment {
 
 
         shaft_switch = (Switch) v.findViewById(R.id.shaft_switch);
+        shaft_switch.setChecked(home_viewModel.getCurrent().getValue().getShaftStatus());
         shaft_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
