@@ -136,10 +136,12 @@ public class Home_Fragment extends Fragment {
                 if (b)
                 {
                     home_viewModel.postShaft(b);
+                    System.out.println("Home fragm.: " + b);
                 }
                 else
                 {
                     home_viewModel.postShaft(false);
+                    System.out.println("Home fragm.: " + b);
                 }
                ;
             }

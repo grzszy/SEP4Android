@@ -14,7 +14,7 @@ public class ServiceGenerator {
 **/
     private static Retrofit.Builder retrofitBuilder = new Retrofit.Builder()
 
-            .baseUrl(/*"http://62.107.191.85:8080/"*/"http://178.155.241.176:8080/")
+            .baseUrl("http://62.107.191.85:8080/"/*"http://178.155.241.176:8080/"*/)
             .addConverterFactory(GsonConverterFactory.create());
 
 

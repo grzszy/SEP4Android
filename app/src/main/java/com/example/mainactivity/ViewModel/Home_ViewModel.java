@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.mainactivity.Model.Current;
-import com.example.mainactivity.Model.Shaft;
 import com.example.mainactivity.Repositories.Home_Repository;
 
 public class Home_ViewModel extends ViewModel {
@@ -19,13 +18,11 @@ public class Home_ViewModel extends ViewModel {
         return home_repository.getCurrent();
     }
 
-    public void postShaft(boolean status){
 
-       if (status){
-           home_repository.postShaft(true);
-        }
-       else
-           home_repository.postShaft(false);
+    public void postShaft(boolean status)
+    {
+        home_repository.postShaft(status);
+        System.out.println("Viewmodel status: " + status);
     }
     public void updateCurrent(){
         home_repository.updateCurrent();

@@ -2,7 +2,6 @@ package com.example.mainactivity.Repositories;
 
 import android.util.Log;
 
-import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import com.example.mainactivity.Model.API_Interface;
@@ -38,8 +37,28 @@ public class Home_Repository {
 
     public void postShaft(boolean status) {
         API_Interface androidAPI = ServiceGenerator.getAPI();
-        Call<API_Response> call = androidAPI.postShaft(status);
-        System.out.println("POST: Shaft posted.");
+        Call<API_Response> post = androidAPI.postShaft(status);
+        System.out.println("Repo post shaft: " + status);
+        post.enqueue(new Callback<API_Response>() {
+            @Override
+            public void onResponse(Call<API_Response> call, Response<API_Response> response) {
+                if(response.equals(true) && response.isSuccessful())
+                {
+                    shaft.setValue(response.body().postShaft(true));
+                    System.out.println("POSTrep: Shaft posted.");
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<API_Response> call, Throwable t) {
+                Log.i("Retrofit2", "Something went wrong in the API!");
+                t.getMessage();
+                t.printStackTrace();
+                t.getCause();
+            }
+        });
+
     }
 
     public void updateCurrent(){
