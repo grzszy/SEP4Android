@@ -12,6 +12,6 @@ public interface API_Interface {
     @GET("DataValues")
     Call<API_Response> getCurrent();
 
-    @POST()
+    @POST("shaft")
     Call<API_Response> postShaft(@Body MutableLiveData<Shaft> shaft);
 }

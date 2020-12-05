@@ -26,7 +26,7 @@ public class API_Response {
 
     @SerializedName("shaft")
     @Expose
-    private int shaft;
+    private boolean shaft;
 
     public Current getCurrent(){
 
@@ -35,7 +35,7 @@ public class API_Response {
 
 
     public Shaft postShaft(){
-        return new Shaft(shaft);
+        return new Shaft(true);
     }
 
 

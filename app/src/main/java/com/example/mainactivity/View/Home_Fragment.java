@@ -6,8 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -39,6 +41,8 @@ public class Home_Fragment extends Fragment {
     TextView textViewCO2;
     TextView textViewPeople;
 
+    Switch shaft_switch;
+
     Current currentTemp;
 
     @Nullable
@@ -51,7 +55,7 @@ public class Home_Fragment extends Fragment {
         progressBarCO2 = v.findViewById(R.id.progressBarCO2);
         progressBarPeople = v.findViewById(R.id.progressBarPeople);
 
-        seekBarShaft = v.findViewById(R.id.seekBarShaft);
+        //seekBarShaft = v.findViewById(R.id.seekBarShaft);
         seekBarVentilator = v.findViewById(R.id.seekBarVentilator);
         buttonUpdate = v.findViewById(R.id.buttonUpdate);
 
@@ -119,7 +123,21 @@ public class Home_Fragment extends Fragment {
 
             }
         });
-        
+
+
+        // implementing a switch
+
+
+        shaft_switch = (Switch) v.findViewById(R.id.shaft_switch);
+        shaft_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                home_viewModel.postShaft(b);
+               ;
+            }
+        });
+
+
         return v;
     }
 }

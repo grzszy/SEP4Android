@@ -19,14 +19,15 @@ public class Home_ViewModel extends ViewModel {
         return home_repository.getCurrent();
     }
 
-    public LiveData<Shaft> postShaft(){
-       return home_repository.postShaft();
+    public void postShaft(boolean status){
+
+       home_repository.postShaft(status);
     }
     public void updateCurrent(){
         home_repository.updateCurrent();
     }
 
-    public void updateShaft(){
-        home_repository.updateShaft();
-    }
+
+
+
 }

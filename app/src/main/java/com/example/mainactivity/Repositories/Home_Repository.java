@@ -24,6 +24,7 @@ public class Home_Repository {
         current = new MutableLiveData<>();
     }
 
+
     public static synchronized Home_Repository getInstance() {
         if(instance == null){
             instance = new Home_Repository();
@@ -35,8 +36,10 @@ public class Home_Repository {
         return current;
     }
 
-    public LiveData<Shaft> postShaft(){
-        return shaft;
+    public void postShaft(boolean status) {
+        API_Interface androidAPI = ServiceGenerator.getAPI();
+        Call<API_Response> call = androidAPI.postShaft(shaft);
+        System.out.println("POST: Shaft posted.");
     }
 
     public void updateCurrent(){
@@ -62,7 +65,7 @@ public class Home_Repository {
         });
     }
 
-    public void updateShaft(){
+    /*public void updateShaft(){
         API_Interface androidAPI = ServiceGenerator.getAPI();
         Call<API_Response> call = androidAPI.postShaft(shaft);
 
@@ -83,5 +86,5 @@ public class Home_Repository {
 
             }
         });
-    }
+    }*/
 }
