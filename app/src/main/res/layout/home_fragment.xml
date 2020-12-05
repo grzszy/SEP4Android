@@ -172,7 +172,7 @@
         app:layout_constraintVertical_bias="0.795" />
 
     <Switch
-        android:id="@+id/switch1"
+        android:id="@+id/shaft_switch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
