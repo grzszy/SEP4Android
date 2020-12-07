@@ -57,7 +57,6 @@ public class Home_Fragment extends Fragment {
         progressBarPeople = v.findViewById(R.id.progressBarPeople);
 
         shaft_switch = v.findViewById(R.id.shaft_switch);
-        seekBarVentilator = v.findViewById(R.id.seekBarVentilator);
         buttonUpdate = v.findViewById(R.id.buttonUpdate);
 
         textViewTemp = v.findViewById(R.id.textViewTemp);
