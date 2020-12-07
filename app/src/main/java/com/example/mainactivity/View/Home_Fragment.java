@@ -37,7 +37,6 @@ public class Home_Fragment extends Fragment {
     ProgressBar progressBarPeople;
 
 
-    SeekBar seekBarVentilator;
 
     Button buttonUpdate;
 
@@ -48,7 +47,6 @@ public class Home_Fragment extends Fragment {
 
     Switch shaft_switch;
 
-    Current currentTemp;
 
     @Nullable
     @Override
@@ -102,7 +100,7 @@ public class Home_Fragment extends Fragment {
                 }
 
                 if (progressBarTemp.getProgress() == 0 && progressBarCO2.getProgress() == 0 && progressBarHumidity.getProgress() == 0){
-                    String stringFromTextView = "Warning! Updated parameter values is unavailable. Try again later";
+                    String stringFromTextView = "                 Warning!                   Updated parameter values is unavailable. Try again later.";
                     showAlertDialog(stringFromTextView);
                 }
 
@@ -116,21 +114,16 @@ public class Home_Fragment extends Fragment {
         progressBarPeople.setMax(200);
 
 
-
-
-
         home_viewModel = new ViewModelProvider(this).get(Home_ViewModel.class);
         home_viewModel.getCurrent().observe(getActivity(), new Observer<Current>() {
             @Override
             public void onChanged(Current current) {
 
 
-
                 Home_Fragment.this.progressBarTemp.setProgress((int) current.getTemp_value());
                 Home_Fragment.this.progressBarHumidity.setProgress((int) current.getHumidity_value());
                 Home_Fragment.this.progressBarCO2.setProgress(current.getCO2_value());
                 Home_Fragment.this.progressBarPeople.setProgress(current.getPassenger_value());
-                Home_Fragment.this.shaft_switch.setChecked(current.getShaftStatus());
 
 
 
@@ -149,16 +142,7 @@ public class Home_Fragment extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
 
-                if (b)
-                {
-                    home_viewModel.postShaft(b);
-                    System.out.println("Home fragm.: " + b);
-                }
-                else
-                {
-                    home_viewModel.postShaft(false);
-                    System.out.println("Home fragm.: " + b);
-                }
+              home_viewModel.postShaft(b);
 
             }
         });
@@ -167,10 +151,17 @@ public class Home_Fragment extends Fragment {
             @Override
             public void onChanged(Current current) {
 
-                home_viewModel.updateCurrent();
+                if (current.getShaftStatus() == 1){
+                    Home_Fragment.this.shaft_switch.setChecked(true);
+                    System.out.println(current.getShaftStatus() + " current shaft status");
+                }
+                if (current.getShaftStatus() == 0){
+                    Home_Fragment.this.shaft_switch.setChecked(false);
+                    System.out.println(current.getShaftStatus() + " current shaft status");
+                }
 
-                Home_Fragment.this.shaft_switch.setChecked(current.getShaftStatus());
-                System.out.println("set checked view model");
+
+
             }
         });
         return v;
