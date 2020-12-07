@@ -24,6 +24,7 @@ public class Home_Repository {
         current = new MutableLiveData<>();
     }
 
+
     public static synchronized Home_Repository getInstance() {
         if(instance == null){
             instance = new Home_Repository();
@@ -35,8 +36,30 @@ public class Home_Repository {
         return current;
     }
 
-    public LiveData<Shaft> postShaft(){
-        return shaft;
+    public void postShaft(final boolean status) {
+        API_Interface androidAPI = ServiceGenerator.getAPI();
+        Call<API_Response> post = androidAPI.postShaft(status);
+        System.out.println("Repo post shaft: " + status);
+        post.enqueue(new Callback<API_Response>() {
+            @Override
+            public void onResponse(Call<API_Response> call, Response<API_Response> response) {
+                if(response.equals(true) && response.isSuccessful())
+                {
+                    shaft.setValue(response.body().postShaft(status));
+                    System.out.println("POSTrep: Shaft posted.");
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<API_Response> call, Throwable t) {
+                Log.i("Retrofit2", "Something went wrong in the API!");
+                t.getMessage();
+                t.printStackTrace();
+                t.getCause();
+            }
+        });
+
     }
 
     public void updateCurrent(){
@@ -62,26 +85,4 @@ public class Home_Repository {
         });
     }
 
-    public void updateShaft(){
-        API_Interface androidAPI = ServiceGenerator.getAPI();
-        Call<API_Response> call = androidAPI.postShaft(shaft);
-
-        call.enqueue(new Callback<API_Response>() {
-            @Override
-            public void onResponse(Call<API_Response> call,Response<API_Response> response) {
-                if (response.code() == 200 && response.isSuccessful()){
-                    Log.i("Retrofit2", "onResponse: Success!");
-
-                }
-            }
-            @Override
-            public void onFailure(Call<API_Response> call, Throwable t) {
-                Log.i("Retrofit2", "Something went wrong in the API!");
-                t.getMessage();
-                t.printStackTrace();
-                t.getCause();
-
-            }
-        });
-    }
 }

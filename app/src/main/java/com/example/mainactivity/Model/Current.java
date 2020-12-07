@@ -7,13 +7,15 @@ public class Current {
     private double Temp_value;
     private double Humidity_value;
     private int Passenger_value;
+    private int shaftStatus;
 
 
-    public Current(int CO2_value, double Temp_value, double Humidity_value, int Passenger_value){
+    public Current(int CO2_value, double Temp_value, double Humidity_value, int Passenger_value, int shaftStatus){
         this.CO2_value = CO2_value;
         this.Temp_value = Temp_value;
         this.Humidity_value = Humidity_value;
         this.Passenger_value = Passenger_value;
+        this.shaftStatus = shaftStatus;
     }
 
 
@@ -47,5 +49,20 @@ public class Current {
 
     public void setPassenger_value(int passenger_value) {
         Passenger_value = passenger_value;
+    }
+
+    public boolean getShaftStatus()
+    {
+        if(shaftStatus==1)
+        {
+            return true;
+
+        }
+        else return false;
+    }
+
+    public void setShaftStatus(int shaftStatus)
+    {
+        this.shaftStatus = shaftStatus;
     }
 }

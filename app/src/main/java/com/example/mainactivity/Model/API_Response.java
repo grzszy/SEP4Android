@@ -30,12 +30,12 @@ public class API_Response {
 
     public Current getCurrent(){
 
-        return new Current(CO2_value,temperature_value,humidity_value,numberOfPassengers_value);
+        return new Current(CO2_value,temperature_value,humidity_value,numberOfPassengers_value, shaft);
     }
 
 
-    public Shaft postShaft(){
-        return new Shaft(shaft);
+    public Shaft postShaft(boolean action){
+        return new Shaft(action);
     }
 
 

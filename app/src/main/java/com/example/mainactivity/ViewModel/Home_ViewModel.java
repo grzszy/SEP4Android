@@ -18,7 +18,18 @@ public class Home_ViewModel extends ViewModel {
         return home_repository.getCurrent();
     }
 
+
+    public void postShaft(boolean status)
+    {
+        home_repository.postShaft(status);
+        System.out.println("Viewmodel status: " + status);
+    }
     public void updateCurrent(){
         home_repository.updateCurrent();
+
     }
+
+
+
+
 }
