@@ -1,16 +1,21 @@
 package com.example.mainactivity.View;
 
+import android.app.AlertDialog;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -95,6 +100,13 @@ public class Home_Fragment extends Fragment {
 
                     textViewPeople.setText(progressBarPeople.getProgress()+"/h");
                 }
+
+                if (progressBarTemp.getProgress() == 0 && progressBarCO2.getProgress() == 0 && progressBarHumidity.getProgress() == 0){
+                    String stringFromTextView = "Warning! Updated parameter values is unavailable. Try again later";
+                    showAlertDialog(stringFromTextView);
+                }
+
+
             }
         });
 
@@ -119,9 +131,6 @@ public class Home_Fragment extends Fragment {
                 Home_Fragment.this.progressBarCO2.setProgress(current.getCO2_value());
                 Home_Fragment.this.progressBarPeople.setProgress(current.getPassenger_value());
                 Home_Fragment.this.shaft_switch.setChecked(current.getShaftStatus());
-
-
-
 
 
 
@@ -165,5 +174,17 @@ public class Home_Fragment extends Fragment {
             }
         });
         return v;
+    }
+
+    private void showAlertDialog(String stringToShow){
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(getContext(),R.style.AlertDialogStyle);
+        builder1.setMessage(stringToShow);
+        builder1.setCancelable(true);
+
+
+        AlertDialog alert11 = builder1.create();
+
+        alert11.show();
+
     }
 }
