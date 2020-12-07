@@ -50,6 +50,7 @@ public class Home_Fragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.home_fragment,container,false);
 
+
         progressBarTemp = v.findViewById(R.id.progressBarTemp);
         progressBarHumidity = v.findViewById(R.id.progressBarHumidity);
         progressBarCO2 = v.findViewById(R.id.progressBarCO2);
