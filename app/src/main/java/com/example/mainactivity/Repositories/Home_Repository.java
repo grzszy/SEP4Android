@@ -35,7 +35,7 @@ public class Home_Repository {
         return current;
     }
 
-    public void postShaft(boolean status) {
+    public void postShaft(final boolean status) {
         API_Interface androidAPI = ServiceGenerator.getAPI();
         Call<API_Response> post = androidAPI.postShaft(status);
         System.out.println("Repo post shaft: " + status);
@@ -44,7 +44,7 @@ public class Home_Repository {
             public void onResponse(Call<API_Response> call, Response<API_Response> response) {
                 if(response.equals(true) && response.isSuccessful())
                 {
-                    shaft.setValue(response.body().postShaft(true));
+                    shaft.setValue(response.body().postShaft(status));
                     System.out.println("POSTrep: Shaft posted.");
                 }
 
@@ -84,18 +84,21 @@ public class Home_Repository {
         });
     }
 
-    /*public void updateShaft(){
+    public void updateShaft(){
         API_Interface androidAPI = ServiceGenerator.getAPI();
-        Call<API_Response> call = androidAPI.postShaft(shaft);
+        Call<API_Response> call = androidAPI.getCurrent();
 
         call.enqueue(new Callback<API_Response>() {
             @Override
             public void onResponse(Call<API_Response> call,Response<API_Response> response) {
-                if (response.code() == 200 && response.isSuccessful()){
+                if (response.code() == 200 && response.isSuccessful());
+                    if (response.equals(true)  && response.isSuccessful());
+                {
+                    current.setValue(response.body().getCurrent());
+                }
                     Log.i("Retrofit2", "onResponse: Success!");
 
                 }
-            }
             @Override
             public void onFailure(Call<API_Response> call, Throwable t) {
                 Log.i("Retrofit2", "Something went wrong in the API!");
@@ -105,5 +108,5 @@ public class Home_Repository {
 
             }
         });
-    }*/
+    }
 }

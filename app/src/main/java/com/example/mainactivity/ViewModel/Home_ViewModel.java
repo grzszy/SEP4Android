@@ -26,6 +26,7 @@ public class Home_ViewModel extends ViewModel {
     }
     public void updateCurrent(){
         home_repository.updateCurrent();
+
     }
 
 

@@ -56,6 +56,7 @@ public class Current {
         if(shaftStatus==1)
         {
             return true;
+
         }
         else return false;
     }
