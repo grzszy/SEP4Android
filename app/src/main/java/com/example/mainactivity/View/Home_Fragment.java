@@ -150,13 +150,16 @@ public class Home_Fragment extends Fragment {
                     home_viewModel.postShaft(false);
                     System.out.println("Home fragm.: " + b);
                 }
-               ;
+
             }
         });
         home_viewModel = new ViewModelProvider(this).get(Home_ViewModel.class);
         home_viewModel.getCurrent().observe(getActivity(), new Observer<Current>() {
             @Override
             public void onChanged(Current current) {
+
+                home_viewModel.updateCurrent();
+
                 Home_Fragment.this.shaft_switch.setChecked(current.getShaftStatus());
                 System.out.println("set checked view model");
             }

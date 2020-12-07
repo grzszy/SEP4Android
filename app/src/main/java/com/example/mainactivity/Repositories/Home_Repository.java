@@ -84,29 +84,4 @@ public class Home_Repository {
         });
     }
 
-    public void updateShaft(){
-        API_Interface androidAPI = ServiceGenerator.getAPI();
-        Call<API_Response> call = androidAPI.getCurrent();
-
-        call.enqueue(new Callback<API_Response>() {
-            @Override
-            public void onResponse(Call<API_Response> call,Response<API_Response> response) {
-                if (response.code() == 200 && response.isSuccessful());
-                    if (response.equals(true)  && response.isSuccessful());
-                {
-                    current.setValue(response.body().getCurrent());
-                }
-                    Log.i("Retrofit2", "onResponse: Success!");
-
-                }
-            @Override
-            public void onFailure(Call<API_Response> call, Throwable t) {
-                Log.i("Retrofit2", "Something went wrong in the API!");
-                t.getMessage();
-                t.printStackTrace();
-                t.getCause();
-
-            }
-        });
-    }
 }
