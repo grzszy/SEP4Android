@@ -70,6 +70,8 @@ public class Home_Repository {
             public void onResponse(Call<API_Response> call,Response<API_Response> response) {
                 if (response.code() == 200 && response.isSuccessful()){
                     current.setValue(response.body().getCurrent());
+                    System.out.println(current.getValue().getShaftStatus() + " shaft in currentUpdate");
+
 
                 }
             }
