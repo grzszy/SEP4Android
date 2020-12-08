@@ -4,18 +4,18 @@ import com.google.gson.annotations.SerializedName;
 
 public class Shaft {
     @SerializedName("shaft")
-    private boolean status;
+    private int status;
 
-    public Shaft(boolean status){
+    public Shaft(int status){
         this.status = status;
 
     }
 
-    public boolean getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 }

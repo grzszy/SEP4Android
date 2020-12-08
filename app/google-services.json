@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "248038418312",
+    "project_id": "climate-control-system",
+    "storage_bucket": "climate-control-system.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:248038418312:android:e13f7929c90c2064147c3d",
+        "android_client_info": {
+          "package_name": "com.example.mainactivity"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "248038418312-gee5psnjug311i8ql273n85tv67kkvj6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALlTnk4gW0S23nysuzM3r0RW4r0ErnqTc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "248038418312-gee5psnjug311i8ql273n85tv67kkvj6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

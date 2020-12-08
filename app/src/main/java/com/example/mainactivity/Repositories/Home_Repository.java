@@ -40,23 +40,23 @@ public class Home_Repository {
         Call<API_Response> post = androidAPI.postShaft(status);
         System.out.println("Repo post shaft: " + status);
         post.enqueue(new Callback<API_Response>() {
+
             @Override
-            public void onResponse(Call<API_Response> call, Response<API_Response> response) {
-                if(response.equals(true) && response.isSuccessful())
-                {
-                    shaft.setValue(response.body().postShaft(status));
-                    System.out.println("POSTrep: Shaft posted.");
-                }
+            public void onResponse(Call<API_Response> call,Response<API_Response> response) {
+
+                    System.out.println("SUCCESS!" + status);
+
 
             }
-
             @Override
             public void onFailure(Call<API_Response> call, Throwable t) {
                 Log.i("Retrofit2", "Something went wrong in the API!");
                 t.getMessage();
                 t.printStackTrace();
                 t.getCause();
+
             }
+
         });
 
     }
@@ -70,6 +70,8 @@ public class Home_Repository {
             public void onResponse(Call<API_Response> call,Response<API_Response> response) {
                 if (response.code() == 200 && response.isSuccessful()){
                     current.setValue(response.body().getCurrent());
+                    System.out.println(current.getValue().getShaftStatus() + " shaft in currentUpdate");
+
 
                 }
             }
