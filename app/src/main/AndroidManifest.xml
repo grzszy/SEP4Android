@@ -14,9 +14,13 @@
 
         android:networkSecurityConfig="@xml/security_config"
         android:theme="@style/AppTheme">
-        an
+
+        <activity android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
         <activity
-            android:name=".MainActivity"
+            android:name=".SignIn"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
