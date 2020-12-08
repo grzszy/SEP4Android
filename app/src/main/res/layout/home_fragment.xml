@@ -169,10 +169,13 @@
 
     <Button
         android:id="@+id/buttonUpdate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Update"
+        style="@style/AppTheme.RoundedCornerMaterialButton"
+        android:layout_width="109dp"
+        android:layout_height="33dp"
         android:focusableInTouchMode="true"
+        android:text="Update"
+        android:textColor="#609DAF"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.674"

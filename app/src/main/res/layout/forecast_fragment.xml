@@ -44,9 +44,12 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/AppTheme.RoundedCornerMaterialButton"
+        android:layout_width="99dp"
+        android:layout_height="38dp"
         android:text="Button"
+        android:textColor="#609DAF"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
