@@ -10,6 +10,7 @@ import com.example.mainactivity.Model.Current;
 import com.example.mainactivity.Model.ServiceGenerator;
 import com.example.mainactivity.Model.Shaft;
 
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -42,7 +43,8 @@ public class Home_Repository {
         post.enqueue(new Callback<API_Response>() {
             @Override
             public void onResponse(Call<API_Response> call, Response<API_Response> response) {
-                if(response.equals(true) && response.isSuccessful())
+
+                if(response.code() == 200 && response.isSuccessful())
                 {
                     shaft.setValue(response.body().postShaft(status));
                     System.out.println("POSTrep: Shaft posted.");

@@ -158,7 +158,7 @@ public class Home_Fragment extends Fragment {
             @Override
             public void onChanged(Current current) {
                 Home_Fragment.this.shaft_switch.setChecked(current.getShaftStatus());
-                System.out.println("set checked view model");
+                System.out.println("set checked view model" + current.getShaftStatus());
             }
         });
         return v;
