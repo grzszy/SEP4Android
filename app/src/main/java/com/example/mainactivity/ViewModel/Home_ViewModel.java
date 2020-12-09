@@ -25,7 +25,6 @@ public class Home_ViewModel extends ViewModel {
         System.out.println("Viewmodel status: " + status);
     }
     public void updateCurrent(){
-
         home_repository.updateCurrent();
     }
 

@@ -1,17 +1,13 @@
 package com.example.mainactivity.Model;
 
-import static org.junit.jupiter.api.Assertions.*;
+import junit.framework.TestCase;
 
-class API_ResponseTest {
-
-    @org.junit.jupiter.api.Test
-    void getCurrent() {
-        Current current = new Current(1,2,3,4);
-        assertEquals(1,1);
-
+public class API_ResponseTest extends TestCase {
+    Current current = new Current(1,1,1,1,1);
+    public void testGetCurrent() {
+        assertEquals(current,current.getClass());
     }
 
-    @org.junit.jupiter.api.Test
-    void postShaft() {
+    public void testPostShaft() {
     }
 }
