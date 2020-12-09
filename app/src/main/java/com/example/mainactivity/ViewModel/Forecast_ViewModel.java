@@ -16,12 +16,12 @@ public class Forecast_ViewModel {
         forecast_repository = Forecast_Repository.getInstance();
     }
 
-    public LiveData<Forecast> getCurrent(){
+    public LiveData<Forecast> getForecast(){
         return forecast_repository.getForecast();
     }
 
 
-    public void updateCurrent(String date){
+    public void updateForecast(String date){
 
         forecast_repository.updateForecast(date);
     }
