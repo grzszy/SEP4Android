@@ -109,10 +109,7 @@ public class Home_Fragment extends Fragment {
                 }
 
 
-                if (progressBarTemp.getProgress() == 0 && progressBarCO2.getProgress() == 0 && progressBarHumidity.getProgress() == 0){
-                    String stringFromTextView = "                 Warning!                   Updated parameter values is unavailable. Try again later.";
-                    showAlertDialog(stringFromTextView);
-                }
+
             }
         });
 
@@ -126,7 +123,10 @@ public class Home_Fragment extends Fragment {
                 {
                     home_viewModel.updateCurrent();
                 }
-
+                if (progressBarTemp.getProgress() == 0 && progressBarCO2.getProgress() == 0 && progressBarHumidity.getProgress() == 0){
+                    String stringFromTextView = "                 Warning!                   Updated parameter values is unavailable. Try again later.";
+                    showAlertDialog(stringFromTextView);
+                }
 
 
             }

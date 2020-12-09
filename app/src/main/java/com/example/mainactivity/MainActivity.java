@@ -17,10 +17,16 @@ import androidx.annotation.NonNull;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+import androidx.appcompat.widget.Toolbar;
+
 
 public class MainActivity extends AppCompatActivity {
+
+    Toolbar toolbar;
+    View view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +37,24 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
-
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         checkIfSignedIn();
+
 
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.exit:
+               signOut(view);
+                return true;
 
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
     private void checkIfSignedIn() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
