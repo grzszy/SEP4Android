@@ -34,7 +34,9 @@ public class Forecast_Fragment extends Fragment {
             String date = year + "-" + (month+1) + "-" + dayOfMonth;
 
                 forecastViewModel.updateForecast(date);
-            //System.out.println("FORECAST: " + forecastViewModel.getForecast().getValue().toString());
+
+
+
 
 
 

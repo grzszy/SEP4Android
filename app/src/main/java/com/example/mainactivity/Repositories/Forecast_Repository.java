@@ -40,6 +40,7 @@ public class Forecast_Repository {
 
 
     public void updateForecast(String date) {
+
         API_Interface API = ServiceGenerator.getAPI();
         System.out.println("Repository forecast: " + date);
         Call<API_ResponseForecast> call = API.getForecast(date);
