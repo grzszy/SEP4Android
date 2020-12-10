@@ -24,6 +24,8 @@ public class Home_Repository {
     }
 
 
+
+
     public static synchronized Home_Repository getInstance() {
         if(instance == null){
             instance = new Home_Repository();
