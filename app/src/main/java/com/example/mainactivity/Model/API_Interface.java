@@ -14,6 +14,6 @@ public interface API_Interface {
     @POST("PostAction")
     Call<API_Response> postShaft(@Body boolean action);
 
-    @GET("Forecast/{date}")
+    @GET("GetForecast/{date}")
     Call<API_ResponseForecast> getForecast(@Path("date") String date);
 }

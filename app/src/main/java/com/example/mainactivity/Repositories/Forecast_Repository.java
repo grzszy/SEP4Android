@@ -49,6 +49,8 @@ public class Forecast_Repository {
             public void onResponse(Call<API_ResponseForecast> call, Response<API_ResponseForecast> response) {
                 if (response.code() == 200) {
                     forecast.setValue(response.body().getForecast());
+
+                    System.out.println("REPO: " + response.body().getForecast().getTemp_8());
                 }
             }
             @Override
