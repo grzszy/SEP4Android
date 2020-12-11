@@ -21,8 +21,8 @@
 
     <TableLayout
 
-        android:layout_width="448dp"
-        android:layout_height="277dp"
+        android:layout_width="match_parent"
+        android:layout_height="266dp"
         android:gravity="center"
         android:stretchColumns="0,1,2"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -72,7 +72,6 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textView11"
                 android:layout_width="81dp"
                 android:layout_height="match_parent"
                 android:layout_column="2"
@@ -84,7 +83,6 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textView14"
                 android:layout_width="81dp"
                 android:layout_height="match_parent"
                 android:layout_column="2"
@@ -112,48 +110,47 @@
                 android:background="#FFFFFF"
                 android:gravity="center"
                 android:text="Temp"
+                android:textStyle="bold"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
+                android:id="@+id/t8"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_column="1"
                 android:layout_margin="1dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
-                android:text=" Text"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
+                android:id="@+id/t12"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_column="2"
                 android:layout_margin="1dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
-                android:text=" Text"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
-                android:id="@+id/textView16"
+                android:id="@+id/t16"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_column="2"
                 android:layout_margin="1dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
-                android:text=" Text"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
-                android:id="@+id/textView17"
+                android:id="@+id/t20"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_column="2"
                 android:layout_margin="1dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
-                android:text=" Text"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
         </TableRow>
 
@@ -172,48 +169,47 @@
                 android:background="#FFFFFF"
                 android:gravity="center"
                 android:text="Co2"
+                android:textStyle="bold"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
+                android:id="@+id/c8"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_column="1"
                 android:layout_margin="1dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
-                android:text=" Text"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
+                android:id="@+id/c12"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_column="2"
                 android:layout_margin="1dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
-                android:text=" Text"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
-                android:id="@+id/textView18"
+                android:id="@+id/c16"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_column="2"
                 android:layout_margin="1dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
-                android:text=" Text"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
-                android:id="@+id/textView20"
+                android:id="@+id/c20"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_column="2"
                 android:layout_margin="1dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
-                android:text=" Text"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
         </TableRow>
 
@@ -233,48 +229,47 @@
                 android:background="#FFFFFF"
                 android:gravity="center"
                 android:text="Humidity"
+                android:textStyle="bold"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
+                android:id="@+id/h8"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_column="1"
                 android:layout_margin="1dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
-                android:text=" Text"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
+                android:id="@+id/h12"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_column="2"
                 android:layout_margin="1dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
-                android:text=" Text"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
-                android:id="@+id/textView47"
+                android:id="@+id/h16"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_column="2"
                 android:layout_margin="1dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
-                android:text=" Text"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
-                android:id="@+id/textView48"
+                android:id="@+id/h20"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_column="2"
                 android:layout_margin="1dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
-                android:text=" Text"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
         </TableRow>
 
@@ -293,48 +288,47 @@
                 android:background="#FFFFFF"
                 android:gravity="center"
                 android:text="People"
+                android:textStyle="bold"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
+                android:id="@+id/p8"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_column="1"
                 android:layout_margin="1dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
-                android:text=" Text"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
+                android:id="@+id/p12"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_column="2"
                 android:layout_margin="1dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
-                android:text=" Text"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
-                android:id="@+id/textView49"
+                android:id="@+id/p16"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_column="2"
                 android:layout_margin="1dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
-                android:text=" Text"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
-                android:id="@+id/textView50"
+                android:id="@+id/p20"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_column="2"
                 android:layout_margin="1dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
-                android:text=" Text"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
         </TableRow>
 
