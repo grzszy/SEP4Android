@@ -45,7 +45,7 @@ public class Forecast_Fragment extends Fragment {
             public void onChanged(Forecast forecast) {
                 if(forecastViewModel.getForecast()!= null){
                     fc = forecastViewModel.getForecast();
-                    Forecast_Fragment.this.t1.setText(fc.getValue().getTemp_8());
+                    Forecast_Fragment.this.t1.setText(fc.getValue().getTemp_8() + "");
                     System.out.println(fc.getValue().getTemp_8());
                 }
             }

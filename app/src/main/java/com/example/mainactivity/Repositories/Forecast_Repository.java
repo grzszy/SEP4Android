@@ -47,6 +47,7 @@ public class Forecast_Repository {
         call.enqueue(new Callback<API_ResponseForecast>() {
             @Override
             public void onResponse(Call<API_ResponseForecast> call, Response<API_ResponseForecast> response) {
+
                 if (response.code() == 200) {
                     forecast.setValue(response.body().getForecast());
 
