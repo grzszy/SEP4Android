@@ -15,7 +15,7 @@ public class Forecast_ViewModel extends AndroidViewModel {
     Forecast_Repository forecast_repository;
 
     /**
-     * 
+     * Constructor for Forecast_ViewModel.
      * @param application
      */
     public Forecast_ViewModel(Application application){
@@ -23,11 +23,17 @@ public class Forecast_ViewModel extends AndroidViewModel {
         forecast_repository = Forecast_Repository.getInstance();
     }
 
+    /**
+     * Method calling getForecast() method in the repository.
+     */
     public LiveData<Forecast> getForecast(){
         return forecast_repository.getForecast();
     }
 
-
+    /**
+     * Method calling updqateForecat() method in the repository.
+     * @param date
+     */
     public void updateForecast(String date){
 
         forecast_repository.updateForecast(date);
