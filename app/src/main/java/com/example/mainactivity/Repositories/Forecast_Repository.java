@@ -26,7 +26,10 @@ public class Forecast_Repository {
     }
 
 
-
+    /**
+     * Getter for an instance of the Forecast_Repository class.
+     * @return instance
+     */
     public static synchronized Forecast_Repository getInstance() {
         if(instance == null){
             instance = new Forecast_Repository();
@@ -34,11 +37,19 @@ public class Forecast_Repository {
         return instance;
     }
 
+    /**
+     * Getter for forecast.
+     * @return forecast
+     */
     public LiveData<Forecast> getForecast() {
         return forecast;
     }
 
 
+    /**
+     * Method updating forecast based on the data received from the database.
+     * @param date
+     */
     public void updateForecast(String date) {
 
         API_Interface API = ServiceGenerator.getAPI();

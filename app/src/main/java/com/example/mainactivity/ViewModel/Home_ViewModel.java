@@ -34,8 +34,8 @@ public class Home_ViewModel extends ViewModel {
      * Method calling updateCurrent() method in the repository.
      */
     public void updateCurrent(){
-
         home_repository.updateCurrent();
+
     }
 
 
