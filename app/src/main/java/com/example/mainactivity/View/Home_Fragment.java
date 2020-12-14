@@ -1,26 +1,35 @@
 package com.example.mainactivity.View;
 
+import android.app.AlertDialog;
+import android.content.Context;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.mainactivity.Model.Current;
 import com.example.mainactivity.R;
 import com.example.mainactivity.ViewModel.Home_ViewModel;
+
+import java.io.IOException;
 
 public class Home_Fragment extends Fragment {
 
@@ -32,7 +41,6 @@ public class Home_Fragment extends Fragment {
     ProgressBar progressBarPeople;
 
 
-    SeekBar seekBarVentilator;
 
     Button buttonUpdate;
 
@@ -43,12 +51,12 @@ public class Home_Fragment extends Fragment {
 
     Switch shaft_switch;
 
-    Current currentTemp;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.home_fragment,container,false);
+
 
         progressBarTemp = v.findViewById(R.id.progressBarTemp);
         progressBarHumidity = v.findViewById(R.id.progressBarHumidity);
@@ -56,7 +64,6 @@ public class Home_Fragment extends Fragment {
         progressBarPeople = v.findViewById(R.id.progressBarPeople);
 
         shaft_switch = v.findViewById(R.id.shaft_switch);
-        seekBarVentilator = v.findViewById(R.id.seekBarVentilator);
         buttonUpdate = v.findViewById(R.id.buttonUpdate);
 
         textViewTemp = v.findViewById(R.id.textViewTemp);
@@ -70,18 +77,23 @@ public class Home_Fragment extends Fragment {
         progressBarPeople.getProgressDrawable().setColorFilter(Color.YELLOW,android.graphics.PorterDuff.Mode.SRC_IN);
 
 
-        buttonUpdate.setOnClickListener(new View.OnClickListener() {
+        progressBarCO2.setMax(2000);
+        progressBarTemp.setMax(60);
+        progressBarHumidity.setMax(100);
+        progressBarPeople.setMax(200);
+
+        home_viewModel = new ViewModelProvider(this).get(Home_ViewModel.class);
+        home_viewModel.getCurrent().observe(getActivity(), new Observer<Current>() {
             @Override
-            public void onClick(View v) {
-                if (home_viewModel.getCurrent() != null)
-                {
-                    home_viewModel.updateCurrent();
-                }
+            public void onChanged(Current current) {
 
-
+                Home_Fragment.this.progressBarTemp.setProgress((int) current.getTemp_value());
+                Home_Fragment.this.progressBarHumidity.setProgress((int) current.getHumidity_value());
+                Home_Fragment.this.progressBarCO2.setProgress(current.getCO2_value());
+                Home_Fragment.this.progressBarPeople.setProgress(current.getPassenger_value());
                 if (progressBarTemp != null ){
 
-                    textViewTemp.setText(progressBarTemp.getProgress()+"°C");
+                    textViewTemp.setText(progressBarTemp.getProgress() +"°C");
                 }
                 if (progressBarCO2 != null ){
 
@@ -95,38 +107,32 @@ public class Home_Fragment extends Fragment {
 
                     textViewPeople.setText(progressBarPeople.getProgress()+"/h");
                 }
+
+
+
             }
         });
 
-        progressBarCO2.setMax(2000);
-        progressBarTemp.setMax(60);
-        progressBarHumidity.setMax(100);
-        progressBarPeople.setMax(200);
 
 
-
-
-
-        home_viewModel = new ViewModelProvider(this).get(Home_ViewModel.class);
-        home_viewModel.getCurrent().observe(getActivity(), new Observer<Current>() {
+        buttonUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onChanged(Current current) {
+            public void onClick(View v) {
 
-
-
-                Home_Fragment.this.progressBarTemp.setProgress((int) current.getTemp_value());
-                Home_Fragment.this.progressBarHumidity.setProgress((int) current.getHumidity_value());
-                Home_Fragment.this.progressBarCO2.setProgress(current.getCO2_value());
-                Home_Fragment.this.progressBarPeople.setProgress(current.getPassenger_value());
-                Home_Fragment.this.shaft_switch.setChecked(current.getShaftStatus());
-
-
-
-
+                if (home_viewModel.getCurrent() != null)
+                {
+                    home_viewModel.updateCurrent();
+                }
+                if (progressBarTemp.getProgress() == 0 && progressBarCO2.getProgress() == 0 && progressBarHumidity.getProgress() == 0){
+                    String stringFromTextView = "                 Warning!                   Updated parameter values is unavailable. Try again later.";
+                    showAlertDialog(stringFromTextView);
+                }
 
 
             }
         });
+
+
 
 
         // implementing a switch
@@ -140,27 +146,40 @@ public class Home_Fragment extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
 
-                if (b)
-                {
-                    home_viewModel.postShaft(b);
-                    System.out.println("Home fragm.: " + b);
-                }
-                else
-                {
-                    home_viewModel.postShaft(false);
-                    System.out.println("Home fragm.: " + b);
-                }
-               ;
+              home_viewModel.postShaft(b);
+
             }
         });
         home_viewModel = new ViewModelProvider(this).get(Home_ViewModel.class);
         home_viewModel.getCurrent().observe(getActivity(), new Observer<Current>() {
             @Override
             public void onChanged(Current current) {
-                Home_Fragment.this.shaft_switch.setChecked(current.getShaftStatus());
-                System.out.println("set checked view model" + current.getShaftStatus());
+
+                if (current.getShaftStatus() == 1){
+                    Home_Fragment.this.shaft_switch.setChecked(true);
+                    System.out.println(current.getShaftStatus() + " current shaft status");
+                }
+                if (current.getShaftStatus() == 0){
+                    Home_Fragment.this.shaft_switch.setChecked(false);
+                    System.out.println(current.getShaftStatus() + " current shaft status");
+                }
+
+
+
             }
         });
         return v;
+    }
+
+    private void showAlertDialog(String stringToShow){
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(getContext(),R.style.AlertDialogStyle);
+        builder1.setMessage(stringToShow);
+        builder1.setCancelable(true);
+
+
+        AlertDialog alert11 = builder1.create();
+
+        alert11.show();
+
     }
 }
