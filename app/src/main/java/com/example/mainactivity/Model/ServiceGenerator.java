@@ -17,6 +17,8 @@ public class ServiceGenerator {
 
 
 
+
+
     private static Retrofit retrofit = retrofitBuilder.build();
 
     private static API_Interface api = retrofit.create(API_Interface.class);

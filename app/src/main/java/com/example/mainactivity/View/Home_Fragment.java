@@ -2,6 +2,7 @@ package com.example.mainactivity.View;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -25,6 +26,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.mainactivity.Model.AveragePeople;
 import com.example.mainactivity.Model.Current;
 import com.example.mainactivity.R;
 import com.example.mainactivity.ViewModel.Home_ViewModel;
@@ -43,7 +45,7 @@ public class Home_Fragment extends Fragment {
 
 
     Button buttonUpdate;
-
+    TextView textViewAveragePeople;
     TextView textViewTemp;
     TextView textViewHumidity;
     TextView textViewCO2;
@@ -70,6 +72,8 @@ public class Home_Fragment extends Fragment {
         textViewHumidity = v.findViewById(R.id.textViewHumidity);
         textViewCO2 = v.findViewById(R.id.textViewCO2);
         textViewPeople = v.findViewById(R.id.textViewPeople);
+        textViewAveragePeople = v.findViewById(R.id.textViewAveragePeople);
+
 
         progressBarTemp.getProgressDrawable().setColorFilter(Color.RED,android.graphics.PorterDuff.Mode.SRC_IN);
         progressBarCO2.getProgressDrawable().setColorFilter(Color.GREEN,android.graphics.PorterDuff.Mode.SRC_IN);
@@ -108,10 +112,59 @@ public class Home_Fragment extends Fragment {
                     textViewPeople.setText(progressBarPeople.getProgress()+"/h");
                 }
 
+                if (progressBarTemp.getProgress() == 0 && progressBarCO2.getProgress() == 0 && progressBarHumidity.getProgress() == 0){
+                    String stringFromTextView = "                 Warning!                   Updated parameter values is unavailable. Try again later.";
+                    showAlertDialog(stringFromTextView);
+                }
 
+
+                SharedPreferences preferences1 = getActivity().getSharedPreferences("temp", Context.MODE_PRIVATE);
+                int temp = preferences1.getInt("temp",0);
+
+                if (temp >= progressBarTemp.getProgress()){
+                    String stringFromTextView = "                 Warning!                   Tempreture level is too high ! ";
+                    showAlertDialog(stringFromTextView);
+                }
+
+                SharedPreferences preferences2 = getActivity().getSharedPreferences("co2", Context.MODE_PRIVATE);
+                int co2 = preferences2.getInt("co2",0);
+
+                if (co2 >= progressBarCO2.getProgress()){
+                    String stringFromTextView = "                 Warning!                   Co2 level is too high ! ";
+                    showAlertDialog(stringFromTextView);
+                }
+
+                SharedPreferences preferences3 = getActivity().getSharedPreferences("hum", Context.MODE_PRIVATE);
+                int hum = preferences3.getInt("hum",0);
+
+                if (hum >= progressBarHumidity.getProgress()){
+                    String stringFromTextView = "                 Warning!                   Humidity level is too high ! ";
+                    showAlertDialog(stringFromTextView);
+                }
+
+                SharedPreferences preferences4 = getActivity().getSharedPreferences("people", Context.MODE_PRIVATE);
+                int people = preferences4.getInt("people",0);
+
+                if (people >= progressBarTemp.getProgress()){
+                    String stringFromTextView = "                 Warning!                   Too many people currently at the station ";
+                    showAlertDialog(stringFromTextView);
+                }
 
             }
         });
+
+
+        home_viewModel.getAveragePeople().observe(getActivity(), new Observer<AveragePeople>() {
+                    @Override
+                    public void onChanged(AveragePeople averagePeople) {
+
+
+
+                            Home_Fragment.this.textViewAveragePeople.setText(averagePeople.getAverageNumberOfPeople()+"");
+
+
+                    }
+                });
 
 
 
@@ -122,11 +175,9 @@ public class Home_Fragment extends Fragment {
                 if (home_viewModel.getCurrent() != null)
                 {
                     home_viewModel.updateCurrent();
+                    home_viewModel.updateAveragePeople();
                 }
-                if (progressBarTemp.getProgress() == 0 && progressBarCO2.getProgress() == 0 && progressBarHumidity.getProgress() == 0){
-                    String stringFromTextView = "                 Warning!                   Updated parameter values is unavailable. Try again later.";
-                    showAlertDialog(stringFromTextView);
-                }
+
 
 
             }

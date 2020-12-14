@@ -28,11 +28,20 @@ public class API_Response {
     @Expose
     private int shaft;
 
+    @SerializedName("averageNumberOfPeople")
+    @Expose
+    private int averageNumberOfPeople;
+
+
     public Current getCurrent(){
 
         return new Current(CO2_value,temperature_value,humidity_value,numberOfPassengers_value, shaft);
     }
 
+
+    public AveragePeople getAveragePeople(){
+        return new AveragePeople(averageNumberOfPeople);
+    }
 
 
     public Shaft postShaft(boolean status){

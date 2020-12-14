@@ -17,7 +17,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.002" />
+        app:layout_constraintVertical_bias="0.042" />
 
     <TableLayout
 
@@ -45,7 +45,7 @@
                 android:layout_margin="1dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
-                android:text="@string/time"
+                android:text="Time"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textStyle="bold" />
 
@@ -56,7 +56,7 @@
                 android:layout_margin="1dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
-                android:text="@string/_08_00"
+                android:text="08:00"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textStyle="bold" />
 
@@ -67,7 +67,7 @@
                 android:layout_margin="1dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
-                android:text="@string/_12_00"
+                android:text="12:00"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textStyle="bold" />
 
@@ -78,7 +78,7 @@
                 android:layout_margin="1dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
-                android:text="@string/_16_00"
+                android:text="16:00"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textStyle="bold" />
 
@@ -89,7 +89,7 @@
                 android:layout_margin="1dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
-                android:text="@string/_20_00"
+                android:text="20:00"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textStyle="bold" />
 
@@ -109,7 +109,7 @@
                 android:layout_margin="1dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
-                android:text="@string/temp"
+                android:text="Temp"
                 android:textStyle="bold"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -168,7 +168,7 @@
                 android:layout_margin="1dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
-                android:text="@string/co2"
+                android:text="Co2"
                 android:textStyle="bold"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -228,7 +228,7 @@
                 android:layout_margin="1dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
-                android:text="@string/humidity"
+                android:text="Humidity"
                 android:textStyle="bold"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -287,7 +287,7 @@
                 android:layout_margin="1dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
-                android:text="@string/people"
+                android:text="People"
                 android:textStyle="bold"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 

@@ -3,14 +3,15 @@ package com.example.mainactivity.Repositories;
 import android.util.Log;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import com.example.mainactivity.Model.API_Interface;
 import com.example.mainactivity.Model.API_LogResponce;
-import com.example.mainactivity.Model.API_ResponseForecast;
 import com.example.mainactivity.Model.Forecast;
 import com.example.mainactivity.Model.ServiceGenerator;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -19,30 +20,33 @@ import retrofit2.Response;
 public class Log_Repository {
 
     private static Log_Repository instance;
-    private ArrayList<LiveData<Forecast>> list = new ArrayList<>();
+
+    private LiveData<List<Forecast>> allForecast = new MutableLiveData<>();
 
 
-public void getList(){
+public void getLog(){
     API_Interface API = ServiceGenerator.getAPI();
-    Call<API_LogResponce> call = API.getList();
-    call.enqueue(new Callback<API_LogResponce>() {
+    Call<List<API_LogResponce>> call = API.getLog();
+    call.enqueue(new Callback<List<API_LogResponce>>() {
         @Override
-        public void onResponse(Call<API_LogResponce> call, Response<API_LogResponce> response) {
+        public void onResponse(Call<List<API_LogResponce>> call, Response<List<API_LogResponce>> response) {
 
             if (response.code() == 200) {
-                //list.setValue(response.body().getForecast());
-
-                //System.out.println("REPO: " + response.body().getForecast().getTemp_8());
+              allForecast = (LiveData<List<Forecast>>) response.body();
             }
         }
+
         @Override
-        public void onFailure(Call<API_LogResponce> call, Throwable t) {
-            Log.i("Retrofit", "Something went wrong :(");
+        public void onFailure(Call<List<API_LogResponce>> call, Throwable t) {
+
         }
+
     });
 }
 
-
+    public LiveData<List<Forecast>> getAllWeathers(){
+        return allForecast;
+    }
 
 
    public static synchronized Log_Repository getInstance(){
