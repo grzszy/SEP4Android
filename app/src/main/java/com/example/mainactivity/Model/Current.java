@@ -51,9 +51,14 @@ public class Current {
         Passenger_value = passenger_value;
     }
 
-    public int getShaftStatus()
+    public boolean getShaftStatus()
     {
-        return shaftStatus;
+        if(shaftStatus==1)
+        {
+            return true;
+
+        }
+        else return false;
     }
 
     public void setShaftStatus(int shaftStatus)
