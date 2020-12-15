@@ -112,10 +112,6 @@ public class Warning_Fragment extends Fragment {
         });
 
 
-
-
-
-
         return v;
     }
 

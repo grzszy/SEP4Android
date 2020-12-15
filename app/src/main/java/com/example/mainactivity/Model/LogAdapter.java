@@ -22,6 +22,8 @@ public class LogAdapter extends RecyclerView.Adapter<LogAdapter.ViewHolder> {
 
 
 
+
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -121,9 +123,6 @@ public class LogAdapter extends RecyclerView.Adapter<LogAdapter.ViewHolder> {
 
 
         }
-
-
-
 
 
     }
