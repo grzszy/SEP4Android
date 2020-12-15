@@ -23,8 +23,10 @@ public class Log_Repository {
 
     private LiveData<List<Forecast>> allForecast = new MutableLiveData<>();
 
-
-public void getLog(){
+    /**
+     * Method for getting the log based on data received from the API.
+     */
+    public void getLog(){
     API_Interface API = ServiceGenerator.getAPI();
     Call<List<API_LogResponce>> call = API.getLog();
     call.enqueue(new Callback<List<API_LogResponce>>() {
@@ -48,7 +50,10 @@ public void getLog(){
         return allForecast;
     }
 
-
+    /**
+     * Method returning and instance of Log_Repository.
+     * @return instance of Log_Repository.
+     */
    public static synchronized Log_Repository getInstance(){
        if(instance==null){
            instance = new Log_Repository();

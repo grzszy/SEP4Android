@@ -29,6 +29,10 @@ public class Home_Repository {
 
 
 
+    /**
+     * Method returning and instance of Home_Repository.
+     * @return instance of Home_Repository.
+     */
     public static synchronized Home_Repository getInstance() {
         if(instance == null){
             instance = new Home_Repository();
@@ -36,14 +40,27 @@ public class Home_Repository {
         return instance;
     }
 
+    /**
+     * Getter for LiveData<Current>.
+     * @return current
+     */
     public LiveData<Current> getCurrent() {
         return current;
     }
 
 
+    /**
+     * Getter for LiveData<AveragePeople>.
+     * @return averagePeople
+     */
     public LiveData<AveragePeople> getAveragePeople() {
         return averagePeople;
     }
+
+    /**
+     * Method posting shaft status to the API_Interface.
+     * @param status boolean (true - shaft on; false - shaft off)
+     */
     public void postShaft(final boolean status) {
         API_Interface androidAPI = ServiceGenerator.getAPI();
         Call<API_Response> post = androidAPI.postShaft(status);
@@ -70,6 +87,9 @@ public class Home_Repository {
 
     }
 
+    /**
+     * Method updating current values from class Current based on data received from API.
+     */
     public void updateCurrent(){
         API_Interface androidAPI = ServiceGenerator.getAPI();
         Call<API_Response> call = androidAPI.getCurrent();
@@ -95,6 +115,9 @@ public class Home_Repository {
     }
 
 
+    /**
+     * Method updating average number of people based on the data received from API.
+     */
     public void updateAveragePeople(){
         API_Interface androidAPI = ServiceGenerator.getAPI();
         Call<API_Response> call = androidAPI.getAverageNumberPeople();

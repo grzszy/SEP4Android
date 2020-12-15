@@ -8,6 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ServiceGenerator {
 
+
     private static Retrofit.Builder retrofitBuilder = new Retrofit.Builder()
 
             .baseUrl(/*Anton: *//*"http://62.107.191.85:8080/"*/
@@ -23,6 +24,10 @@ public class ServiceGenerator {
 
     private static API_Interface api = retrofit.create(API_Interface.class);
 
+    /**
+     * Getter for API.
+     * @return Instance of API_Interface.
+     */
     public static API_Interface getAPI() {
         return api;
     }

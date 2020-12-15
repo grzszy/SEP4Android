@@ -10,6 +10,10 @@ public class API_LogResponce {
     @SerializedName("forecasts")
     private List<Forecast> forecasts;
 
+    /**
+     * Getter for forecast log.
+     * @return forecasts
+     */
     public List<Forecast> getLogs() {
         return forecasts;
     }

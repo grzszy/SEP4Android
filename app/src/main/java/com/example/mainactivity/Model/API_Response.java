@@ -32,18 +32,28 @@ public class API_Response {
     @Expose
     private int averageNumberOfPeople;
 
-
+    /**
+     * Method defining GET action from API_Interface.
+     * @return Current values of CO2, temperature, humidity, number of passengers and shaft status.
+     */
     public Current getCurrent(){
 
         return new Current(CO2_value,temperature_value,humidity_value,numberOfPassengers_value, shaft);
     }
 
-
+    /**
+     * Method defining GET action from API_Interface.
+     * @return Average number of passengers.
+     */
     public AveragePeople getAveragePeople(){
         return new AveragePeople(averageNumberOfPeople);
     }
 
-
+    /**
+     * Method defining POST action from API_Interface.
+     * @param status boolean (true - shaft on, false - shaft off).
+     * @return Shaft object with specified status.
+     */
     public Shaft postShaft(boolean status){
         return new Shaft(shaft);
     }

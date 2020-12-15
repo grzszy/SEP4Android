@@ -58,7 +58,10 @@ public class API_ResponseForecast {
     private int numberOfPassengers_20;
 
 
-
+    /**
+     * Method defining GET action from API_Interface.
+     * @return Values of CO2, temperature, humidity, number of passengers and shaft status at given hour (8, 12, 16, 20).
+     */
     public Forecast getForecast(){
         return new Forecast(co2_8,co2_12,co2_16,co2_20,humidity_8,humidity_12,humidity_16,humidity_20,
                 temp_8,temp_12,temp_16,temp_20,numberOfPassengers_8,numberOfPassengers_12,numberOfPassengers_16, numberOfPassengers_20);
