@@ -1,4 +1,4 @@
-package com.example.mainactivity.Model;
+package com.example.mainactivity.Adapter;
 
 
 import android.view.LayoutInflater;
@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mainactivity.Model.Forecast;
 import com.example.mainactivity.R;
 
 import java.util.ArrayList;
@@ -68,6 +69,7 @@ public class LogAdapter extends RecyclerView.Adapter<LogAdapter.ViewHolder> {
         this.forecasts = forecasts;
         notifyDataSetChanged();
     }
+
 
 
     class ViewHolder extends RecyclerView.ViewHolder {
