@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.mainactivity.Model.API_Interface;
 import com.example.mainactivity.Model.API_LogResponce;
+import com.example.mainactivity.Model.API_ResponseForecast;
 import com.example.mainactivity.Model.Forecast;
 import com.example.mainactivity.Model.ServiceGenerator;
 
@@ -24,27 +25,33 @@ public class Log_Repository {
     private LiveData<List<Forecast>> allForecast = new MutableLiveData<>();
 
 
-public void getLog(){
+public void updateLog(){
     API_Interface API = ServiceGenerator.getAPI();
-    Call<List<API_LogResponce>> call = API.getLog();
-    call.enqueue(new Callback<List<API_LogResponce>>() {
+    Call<ArrayList<API_LogResponce>> call = API.getLog();
+    call.enqueue(new Callback<ArrayList<API_LogResponce>>() {
         @Override
-        public void onResponse(Call<List<API_LogResponce>> call, Response<List<API_LogResponce>> response) {
+        public void onResponse(Call<ArrayList<API_LogResponce>> call, Response<ArrayList<API_LogResponce>> response) {
 
             if (response.code() == 200) {
-              allForecast = (LiveData<List<Forecast>>) response.body();
+                for (int i = 0; i < response.body().size() ; i++) {
+                   // allForecast = response.body();
+                   // ArrayList<Forecast> fo1 = response.body().get
+                    //System.out.println("LOG REPO "+response.body().get(i).getForecast().getTemp_8());
+                }
+
+
             }
         }
 
         @Override
-        public void onFailure(Call<List<API_LogResponce>> call, Throwable t) {
+        public void onFailure(Call<ArrayList<API_LogResponce>> call, Throwable t) {
 
         }
 
     });
 }
 
-    public LiveData<List<Forecast>> getAllWeathers(){
+    public LiveData<List<Forecast>> getLog(){
         return allForecast;
     }
 

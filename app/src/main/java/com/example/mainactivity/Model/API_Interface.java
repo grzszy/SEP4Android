@@ -1,5 +1,6 @@
 package com.example.mainactivity.Model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -23,6 +24,15 @@ public interface API_Interface {
     @GET("GetForecast")
     Call<API_ResponseForecast> getForecast(@Query("date") String date);
 
-    @GET("GetLog")
-    Call<List<API_LogResponce>> getLog();
+
+    @GET("GetLogList")
+    Call<ArrayList<API_LogResponce>> getLog();
+
+/*
+    @GET("GetLogList")
+    Call<List<API_ResponseForecast>> getLog();
+
+
+ */
+
 }
