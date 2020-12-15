@@ -25,14 +25,6 @@ public class Home_Repository {
     }
 
 
-<<<<<<< Updated upstream
-=======
-
-    /**
-     * Getter for an instance of the Home_Repository class.
-     * @return instance
-     */
->>>>>>> Stashed changes
     public static synchronized Home_Repository getInstance() {
         if(instance == null){
             instance = new Home_Repository();
@@ -40,18 +32,10 @@ public class Home_Repository {
         return instance;
     }
 
-    /**
-     * Getter for Current.
-     * @return current
-     */
     public LiveData<Current> getCurrent() {
         return current;
     }
 
-    /**
-     * Method that sends shafts status to the database.
-     * @param status
-     */
     public void postShaft(final boolean status) {
         API_Interface androidAPI = ServiceGenerator.getAPI();
         Call<API_Response> post = androidAPI.postShaft(status);
@@ -79,9 +63,6 @@ public class Home_Repository {
 
     }
 
-    /**
-     * Method updating Current values based on the data received form the database.
-     */
     public void updateCurrent(){
         API_Interface androidAPI = ServiceGenerator.getAPI();
         Call<API_Response> call = androidAPI.getCurrent();
