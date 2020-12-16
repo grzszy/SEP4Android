@@ -104,7 +104,6 @@ public class Home_Repository {
                     current.setValue(response.body().getCurrent());
                     System.out.println("SHAFT STATUS BACK FROM DATA "+response.body().getCurrent().getShaftStatus());
 
-
                 }
             }
 

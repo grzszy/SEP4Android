@@ -41,7 +41,6 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
             case 3:
                 fragment = new Warning_Fragment();
                 break;
-
         }
         return fragment;
     }
