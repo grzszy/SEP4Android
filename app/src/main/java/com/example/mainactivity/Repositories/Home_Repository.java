@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.mainactivity.Model.API_Interface;
+import com.example.mainactivity.Model.API_PostResponce;
 import com.example.mainactivity.Model.API_Response;
 import com.example.mainactivity.Model.AveragePeople;
 import com.example.mainactivity.Model.Current;
@@ -67,17 +68,17 @@ public class Home_Repository {
      */
     public void postShaft(final boolean status) {
         API_Interface androidAPI = ServiceGenerator.getAPI();
-        Call<API_Response> post = androidAPI.postShaft(status);
+        Call<Void> post = androidAPI.postShaft(status);
         System.out.println("Repo post shaft: " + status);
-        post.enqueue(new Callback<API_Response>() {
+        post.enqueue(new Callback<Void>() {
 
             @Override
-            public void onResponse(Call<API_Response> call, Response<API_Response> response) {
+            public void onResponse(Call<Void> call, Response<Void> response) {
                 System.out.println("SUCCESS!" + status);
             }
 
             @Override
-            public void onFailure(Call<API_Response> call, Throwable t) {
+            public void onFailure(Call<Void> call, Throwable t) {
                 Log.i("Retrofit2", "Something went wrong in the API!");
                 t.getMessage();
                 t.printStackTrace();
@@ -101,6 +102,7 @@ public class Home_Repository {
             public void onResponse(Call<API_Response> call, Response<API_Response> response) {
                 if (response.code() == 200 && response.isSuccessful()) {
                     current.setValue(response.body().getCurrent());
+                    System.out.println("SHAFT STATUS BACK FROM DATA "+response.body().getCurrent().getShaftStatus());
 
 
                 }

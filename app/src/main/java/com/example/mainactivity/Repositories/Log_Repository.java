@@ -44,7 +44,6 @@ public class Log_Repository {
                     ArrayList<Forecast> temp = new ArrayList<>();
                     if (response.code() == 200) {
                         for (int i = 0; i <6 ; i++) {
-
                             temp.add(response.body().get(i).getForecast());
                             System.out.println(response.body().get(i).getForecast());
                         }

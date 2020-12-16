@@ -72,9 +72,7 @@ public class Forecast_Fragment extends Fragment {
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-
                 String date = year + "-" + (month + 1) + "-" + dayOfMonth;
-
                 forecastViewModel.updateForecast(date);
 
             }
