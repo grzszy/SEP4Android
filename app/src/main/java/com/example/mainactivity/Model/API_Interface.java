@@ -46,12 +46,9 @@ public interface API_Interface {
      * Method defining GET action in the API.
      * @return Log.
      */
-    @GET("GetLog")
-    Call<List<API_LogResponce>> getLog();
-
 
     @GET("GetLogList")
-    Call<ArrayList<API_LogResponce>> getLog();
+    Call<API_LogResponce> getLog();
 
 /*
     @GET("GetLogList")

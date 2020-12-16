@@ -36,15 +36,19 @@ public class Log_Fragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.hasFixedSize();
         adapter = new LogAdapter();
-        recyclerView.setAdapter(adapter);
         log_viewModel.updateLog();
+        recyclerView.setAdapter(adapter);
+
 
 
 
         log_viewModel.getLog().observe(getActivity(), new Observer<List<Forecast>>() {
             @Override
             public void onChanged(List<Forecast> forecasts) {
+                System.out.println("HELLO FROM LOG FRAGMENT");
+                log_viewModel.updateLog();
                 adapter.setForecasts(forecasts);
+
             }
         });
 

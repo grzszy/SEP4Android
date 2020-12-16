@@ -22,55 +22,54 @@ public class Log_Repository {
 
     private static Log_Repository instance;
 
-    private LiveData<List<Forecast>> allForecast = new MutableLiveData<>();
+    private MutableLiveData<List<Forecast>> allForecast;
+
+    private Log_Repository() {
+        allForecast = new MutableLiveData<>();
+    }
 
 
     /**
      * Method for getting the log based on data received from the API.
      */
-    public void getLog(){
 
 
-public void updateLog(){
+        public void updateLog () {
 
-    API_Interface API = ServiceGenerator.getAPI();
-    Call<ArrayList<API_LogResponce>> call = API.getLog();
-    call.enqueue(new Callback<ArrayList<API_LogResponce>>() {
-        @Override
-        public void onResponse(Call<ArrayList<API_LogResponce>> call, Response<ArrayList<API_LogResponce>> response) {
+            API_Interface API = ServiceGenerator.getAPI();
+            Call<API_LogResponce> call = API.getLog();
+            call.enqueue(new Callback<API_LogResponce>() {
+                @Override
+                public void onResponse(Call<API_LogResponce> call, Response<API_LogResponce> response) {
 
-            if (response.code() == 200) {
-                for (int i = 0; i < response.body().size() ; i++) {
-                   // allForecast = response.body();
-                   // ArrayList<Forecast> fo1 = response.body().get
-                    //System.out.println("LOG REPO "+response.body().get(i).getForecast().getTemp_8());
+                    if (response.code() == 200) {
+                        allForecast.setValue(response.body().getList());
+                        System.out.println("Log-REPO: " + response.body().getList().get(0).toString());
+                    }
                 }
 
+                @Override
+                public void onFailure(Call<API_LogResponce> call, Throwable t) {
+                    Log.i("LOGREPOSITORY", "Something went wrong");
+                }
 
+            });
+        }
+
+        public LiveData<List<Forecast>> getLog () {
+            return allForecast;
+        }
+
+        /**
+         * Method returning and instance of Log_Repository.
+         * @return instance of Log_Repository.
+         */
+        public static synchronized Log_Repository getInstance () {
+            if (instance == null) {
+                instance = new Log_Repository();
             }
+            return instance;
         }
 
-        @Override
-        public void onFailure(Call<ArrayList<API_LogResponce>> call, Throwable t) {
-
-        }
-
-    });
-}
-
-    public LiveData<List<Forecast>> getLog(){
-        return allForecast;
-    }
-
-    /**
-     * Method returning and instance of Log_Repository.
-     * @return instance of Log_Repository.
-     */
-   public static synchronized Log_Repository getInstance(){
-       if(instance==null){
-           instance = new Log_Repository();
-       }
-       return instance;
-   }
 
 }
