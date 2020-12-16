@@ -22,7 +22,7 @@ public class Log_Repository {
 
     private static Log_Repository instance;
 
-    private MutableLiveData<List<Forecast>> allForecast;
+    private MutableLiveData<ArrayList<Forecast>> allForecast;
 
     private Log_Repository() {
         allForecast = new MutableLiveData<>();
@@ -37,26 +37,30 @@ public class Log_Repository {
         public void updateLog () {
 
             API_Interface API = ServiceGenerator.getAPI();
-            Call<API_LogResponce> call = API.getLog();
-            call.enqueue(new Callback<API_LogResponce>() {
+            Call<ArrayList<API_ResponseForecast>> call = API.getLog();
+            call.enqueue(new Callback<ArrayList<API_ResponseForecast>>(){
                 @Override
-                public void onResponse(Call<API_LogResponce> call, Response<API_LogResponce> response) {
-
+                public void onResponse(Call<ArrayList<API_ResponseForecast>> call, Response<ArrayList<API_ResponseForecast>> response) {
+                    ArrayList<Forecast> temp = new ArrayList<>();
                     if (response.code() == 200) {
-                        allForecast.setValue(response.body().getList());
-                        System.out.println("Log-REPO: " + response.body().getList().get(0).toString());
+                        for (int i = 0; i <6 ; i++) {
+
+                            temp.add(response.body().get(i).getForecast());
+                            System.out.println(response.body().get(i).getForecast());
+                        }
+                        allForecast.setValue(temp);
                     }
                 }
 
                 @Override
-                public void onFailure(Call<API_LogResponce> call, Throwable t) {
+                public void onFailure(Call<ArrayList<API_ResponseForecast>> call, Throwable t) {
                     Log.i("LOGREPOSITORY", "Something went wrong");
                 }
 
             });
         }
 
-        public LiveData<List<Forecast>> getLog () {
+        public LiveData<ArrayList<Forecast>> getLog () {
             return allForecast;
         }
 

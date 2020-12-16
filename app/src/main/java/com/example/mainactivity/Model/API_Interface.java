@@ -7,6 +7,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -48,7 +49,7 @@ public interface API_Interface {
      */
 
     @GET("GetLogList")
-    Call<API_LogResponce> getLog();
+    Call<ArrayList<API_ResponseForecast>> getLog();
 
 /*
     @GET("GetLogList")

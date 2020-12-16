@@ -45,10 +45,8 @@ public class Log_Fragment extends Fragment {
         log_viewModel.getLog().observe(getActivity(), new Observer<List<Forecast>>() {
             @Override
             public void onChanged(List<Forecast> forecasts) {
-                System.out.println("HELLO FROM LOG FRAGMENT");
-                log_viewModel.updateLog();
                 adapter.setForecasts(forecasts);
-
+                System.out.println("HELLO FROM LOG FRAGMENT");
             }
         });
 

@@ -36,7 +36,7 @@ public class Warning_Fragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.warning_fragment,container,false);
 
-        editTextTemp = v.findViewById(R.id.editTex tNumber);
+        editTextTemp = v.findViewById(R.id.editTextNumber);
         editTextCo2 = v.findViewById(R.id.editTextNumber2);
         editTextHum = v.findViewById(R.id.editTextNumber4);
         editTextPeople = v.findViewById(R.id.editTextNumber5);
