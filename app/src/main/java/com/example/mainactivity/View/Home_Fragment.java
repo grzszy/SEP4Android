@@ -176,6 +176,7 @@ public class Home_Fragment extends Fragment {
                 {
                     home_viewModel.updateCurrent();
                     home_viewModel.updateAveragePeople();
+
                 }
 
 
@@ -189,8 +190,8 @@ public class Home_Fragment extends Fragment {
         // implementing a switch
 
 
-        shaft_switch = (Switch) v.findViewById(R.id.shaft_switch);
-
+        shaft_switch = v.findViewById(R.id.shaft_switch);
+// was (switch) ^^
 
 
         shaft_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

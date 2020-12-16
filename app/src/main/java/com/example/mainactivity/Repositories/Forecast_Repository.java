@@ -62,7 +62,7 @@ public class Forecast_Repository {
                 if (response.code() == 200) {
                     forecast.setValue(response.body().getForecast());
 
-                    System.out.println("REPO: " + response.body().getForecast().getTemp_8());
+                    System.out.println("Forecast REPO: " + response.body().getForecast().getTemp_8());
                 }
             }
             @Override

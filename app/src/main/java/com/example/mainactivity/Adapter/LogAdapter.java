@@ -11,18 +11,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mainactivity.Model.Forecast;
 import com.example.mainactivity.R;
+import com.example.mainactivity.ViewModel.Log_ViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class LogAdapter extends RecyclerView.Adapter<LogAdapter.ViewHolder> {
 
-
-
     private List<Forecast> forecasts = new ArrayList<>();
-
-
-
 
 
     @NonNull
@@ -31,31 +27,33 @@ public class LogAdapter extends RecyclerView.Adapter<LogAdapter.ViewHolder> {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.loglistitem, parent, false);
         return new ViewHolder(view);
+
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        holder.tl8.setText(forecasts.get(position).getTemp_8());
-        holder.tl12.setText(forecasts.get(position).getTemp_12());
-        holder.tl16.setText(forecasts.get(position).getTemp_16());
-        holder.tl20.setText(forecasts.get(position).getTemp_20());
+
+        holder.tl8.setText(forecasts.get(position).getTemp_8()+"");
+        holder.tl12.setText(forecasts.get(position).getTemp_12()+"");
+        holder.tl16.setText(forecasts.get(position).getTemp_16()+"");
+        holder.tl20.setText(forecasts.get(position).getTemp_20()+"");
 
 
-        holder.cl8.setText(forecasts.get(position).getCo2_8());
-        holder.cl12.setText(forecasts.get(position).getCo2_12());
-        holder.cl16.setText(forecasts.get(position).getCo2_16());
-        holder.cl20.setText(forecasts.get(position).getCo2_20());
+        holder.cl8.setText(forecasts.get(position).getCo2_8()+"");
+        holder.cl12.setText(forecasts.get(position).getCo2_12()+"");
+        holder.cl16.setText(forecasts.get(position).getCo2_16()+"");
+        holder.cl20.setText(forecasts.get(position).getCo2_20()+"");
 
-        holder.hl8.setText(forecasts.get(position).getHumidity_8());
-        holder.hl12.setText(forecasts.get(position).getHumidity_12());
-        holder.hl16.setText(forecasts.get(position).getHumidity_16());
-        holder.hl20.setText(forecasts.get(position).getHumidity_20());
+        holder.hl8.setText(forecasts.get(position).getHumidity_8()+"");
+        holder.hl12.setText(forecasts.get(position).getHumidity_12()+"");
+        holder.hl16.setText(forecasts.get(position).getHumidity_16()+"");
+        holder.hl20.setText(forecasts.get(position).getHumidity_20()+"");
 
-        holder.pl8.setText(forecasts.get(position).getNumberOfPassengers_8());
-        holder.pl12.setText(forecasts.get(position).getNumberOfPassengers_12());
-        holder.pl16.setText(forecasts.get(position).getNumberOfPassengers_16());
-        holder.pl20.setText(forecasts.get(position).getNumberOfPassengers_20());
+        holder.pl8.setText(forecasts.get(position).getNumberOfPassengers_8()+"");
+        holder.pl12.setText(forecasts.get(position).getNumberOfPassengers_12()+"");
+        holder.pl16.setText(forecasts.get(position).getNumberOfPassengers_16()+"");
+        holder.pl20.setText(forecasts.get(position).getNumberOfPassengers_20()+"");
 
 
     }
