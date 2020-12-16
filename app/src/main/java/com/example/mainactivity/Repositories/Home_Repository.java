@@ -100,7 +100,6 @@ public class Home_Repository {
                 if (response.code() == 200 && response.isSuccessful()){
                     current.setValue(response.body().getCurrent());
 
-
                 }
             }
             @Override
