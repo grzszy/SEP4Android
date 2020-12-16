@@ -6,7 +6,6 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.mainactivity.Model.API_Interface;
-import com.example.mainactivity.Model.API_PostResponce;
 import com.example.mainactivity.Model.API_Response;
 import com.example.mainactivity.Model.AveragePeople;
 import com.example.mainactivity.Model.Current;

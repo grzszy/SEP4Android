@@ -172,10 +172,12 @@ public class Home_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                if (home_viewModel.getCurrent() != null)
+                if (home_viewModel.getCurrent() != null )
                 {
+
                     home_viewModel.updateCurrent();
                     home_viewModel.updateAveragePeople();
+
 
                 }
 
@@ -187,11 +189,11 @@ public class Home_Fragment extends Fragment {
 
 
 
-        // implementing a switch
+
 
 
         shaft_switch = v.findViewById(R.id.shaft_switch);
-// was (switch) ^^
+
 
 
         shaft_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -202,7 +204,7 @@ public class Home_Fragment extends Fragment {
 
             }
         });
-        home_viewModel = new ViewModelProvider(this).get(Home_ViewModel.class);
+
         home_viewModel.getCurrent().observe(getActivity(), new Observer<Current>() {
             @Override
             public void onChanged(Current current) {
