@@ -4,4 +4,14 @@
     <string name="tab_text_2">Forecast</string>
     <string name="tab_text_3">Logs</string>
     <string name="tab_text_4">Warnings</string>
+    <string name="date">Date: </string>
+    <string name="time">Time:</string>
+    <string name="_08_00">08.00</string>
+    <string name="_12_00">12.00</string>
+    <string name="_16_00">16.00</string>
+    <string name="_20_00">20.00</string>
+    <string name="co2">Co2</string>
+    <string name="humidity">Humidity</string>
+    <string name="people">People</string>
+    <string name="temp">Temp</string>
 </resources>

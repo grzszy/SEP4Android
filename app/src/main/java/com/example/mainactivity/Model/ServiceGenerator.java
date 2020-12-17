@@ -7,16 +7,16 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ServiceGenerator {
-/**
-    private static OkHttpClient client = new OkHttpClient.Builder()
-            .connectTimeout(100, TimeUnit.SECONDS)
-            .readTimeout(100,TimeUnit.SECONDS).build();
-**/
+
+
     private static Retrofit.Builder retrofitBuilder = new Retrofit.Builder()
 
             .baseUrl(/*Anton: *//*"http://62.107.191.85:8080/"*/
-                    /*Vaclav*/ "http://178.155.241.176:8080/")
+                     //"http://178.155.241.176:8080/")
+                    "http://212.10.149.241:8080/")
             .addConverterFactory(GsonConverterFactory.create());
+
+
 
 
 
@@ -24,6 +24,10 @@ public class ServiceGenerator {
 
     private static API_Interface api = retrofit.create(API_Interface.class);
 
+    /**
+     * Getter for API.
+     * @return Instance of API_Interface.
+     */
     public static API_Interface getAPI() {
         return api;
     }
