@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         tabs.setupWithViewPager(viewPager);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        checkIfSignedIn();
+       // checkIfSignedIn();
 
 
     }
@@ -48,14 +48,14 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.exit:
-               signOut(view);
+               //signOut(view);
                 return true;
 
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
-    private void checkIfSignedIn() {
+    /*private void checkIfSignedIn() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         if (user != null)
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    public void signOut(View v) {
+    /*public void signOut(View v) {
         AuthUI.getInstance()
                 .signOut(this)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -79,5 +79,5 @@ public class MainActivity extends AppCompatActivity {
                         startLoginActivity();
                     }
                 });
-    }
+    }*/
 }

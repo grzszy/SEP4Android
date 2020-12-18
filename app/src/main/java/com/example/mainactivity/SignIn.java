@@ -1,4 +1,4 @@
-package com.example.mainactivity;
+/*package com.example.mainactivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -72,3 +72,4 @@ public class SignIn extends AppCompatActivity {
             Toast.makeText(this, "SIGN IN CANCELLED", Toast.LENGTH_SHORT).show();
     }
 }
+*/
