@@ -6,7 +6,6 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.mainactivity.Model.API_Interface;
-import com.example.mainactivity.Model.API_LogResponce;
 import com.example.mainactivity.Model.API_ResponseForecast;
 import com.example.mainactivity.Model.Forecast;
 import com.example.mainactivity.Model.ServiceGenerator;
@@ -19,6 +18,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Log_Repository {
+
+    /**
+     * @author Mathias Hansen
+     * @author Jakob Hansen
+     */
 
     private static Log_Repository instance;
 

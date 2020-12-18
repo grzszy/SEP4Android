@@ -1,11 +1,13 @@
 package com.example.mainactivity.View;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,6 +37,11 @@ import java.io.IOException;
 
 public class Home_Fragment extends Fragment {
 
+    /**
+     * @author Jakob Hansen
+     */
+
+
     Home_ViewModel home_viewModel;
 
     ProgressBar progressBarTemp;
@@ -53,6 +60,14 @@ public class Home_Fragment extends Fragment {
 
     Switch shaft_switch;
 
+    /**
+     * onCreateView inflate the fragment xml file
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return return the view
+     */
 
     @Nullable
     @Override
@@ -158,15 +173,12 @@ public class Home_Fragment extends Fragment {
                     @Override
                     public void onChanged(AveragePeople averagePeople) {
 
-
-
                             Home_Fragment.this.textViewAveragePeople.setText(averagePeople.getAverageNumberOfPeople()+"");
-
-
                     }
                 });
 
-
+        SharedPreferences sharedPrefs1 = PreferenceManager.getDefaultSharedPreferences(getContext());
+        final String storedValue = sharedPrefs1.getString("key", "defaultValue");
 
         buttonUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -174,27 +186,28 @@ public class Home_Fragment extends Fragment {
 
                 if (home_viewModel.getCurrent() != null )
                 {
-
                     home_viewModel.updateCurrent();
                     home_viewModel.updateAveragePeople();
 
+                    if (storedValue == "true"){
+                        Home_Fragment.this.shaft_switch.setChecked(true);
+                    }
+
+                    if (storedValue == "false"){
+                        Home_Fragment.this.shaft_switch.setChecked(false);
+                    }
+
 
                 }
-
-
 
             }
         });
 
 
-
-
-
-
-
         shaft_switch = v.findViewById(R.id.shaft_switch);
 
-
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getContext());
+        final SharedPreferences.Editor editor = sharedPrefs.edit();
 
         shaft_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -202,30 +215,24 @@ public class Home_Fragment extends Fragment {
 
               home_viewModel.postShaft(b);
 
-            }
-        });
-
-        home_viewModel.getCurrent().observe(getActivity(), new Observer<Current>() {
-            @Override
-            public void onChanged(Current current) {
-
-                if (current.getShaftStatus() == 1){
-                    Home_Fragment.this.shaft_switch.setChecked(true);
-                    System.out.println(current.getShaftStatus() + " current shaft status");
-                }
-                if (current.getShaftStatus() == 0){
-                    Home_Fragment.this.shaft_switch.setChecked(false);
-                    System.out.println(current.getShaftStatus() + " current shaft status");
-                }
+              if (b = true){
+                  editor.putString("key", "true");
+                  editor.apply();
+              }
+              if (b = false){
+                  editor.putString("key", "false");
+                  editor.apply();
+              }
 
 
 
             }
         });
+
         return v;
     }
 
-    private void showAlertDialog(String stringToShow){
+    public void showAlertDialog(String stringToShow){
         AlertDialog.Builder builder1 = new AlertDialog.Builder(getContext(),R.style.AlertDialogStyle);
         builder1.setMessage(stringToShow);
         builder1.setCancelable(true);

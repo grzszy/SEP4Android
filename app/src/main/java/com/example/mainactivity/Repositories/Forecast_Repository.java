@@ -19,6 +19,12 @@ import retrofit2.Response;
 
 public class Forecast_Repository {
 
+    /**
+     * @author Mathias Hansen
+     * @author Jakob Hansen
+     */
+
+
     private static Forecast_Repository instance;
     private MutableLiveData<Forecast> forecast;
     private Forecast_Repository() {

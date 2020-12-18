@@ -2,6 +2,10 @@ package com.example.mainactivity.Model;
 
 public class Forecast {
 
+    /**
+     * @author Mathias Hansen
+     * @author Jakob Hansen
+     */
 
     private int co2_8;
     private int co2_12;

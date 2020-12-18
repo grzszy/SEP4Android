@@ -3,6 +3,11 @@ package com.example.mainactivity.Model;
 public class AveragePeople {
 
 
+    /**
+     * @author Jakob Hansen
+     *
+     */
+
     private int averageNumberOfPeople;
 
     /**

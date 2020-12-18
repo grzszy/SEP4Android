@@ -17,9 +17,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LogAdapter extends RecyclerView.Adapter<LogAdapter.ViewHolder> {
+    /**
+     * @author Mathias Hansen
+     * @author Jakob Hansen
+     *
+     */
+
 
     private List<Forecast> forecasts = new ArrayList<>();
 
+    /**
+     *
+     * @param parent Get the parent fragment to be inflated
+     * @param viewType bind the XML file to the view
+     * @return
+     */
 
     @NonNull
     @Override
@@ -29,6 +41,12 @@ public class LogAdapter extends RecyclerView.Adapter<LogAdapter.ViewHolder> {
         return new ViewHolder(view);
 
     }
+
+    /**
+     * Method onBindViewHolder bind the layout to recyclerView
+     * @param holder bind the layout to the holder
+     * @param position get the position of the forecast list.
+     */
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
@@ -58,17 +76,29 @@ public class LogAdapter extends RecyclerView.Adapter<LogAdapter.ViewHolder> {
 
     }
 
+    /**
+     *
+     * @return returns the size of forecast list
+     */
+
     @Override
     public int getItemCount() {
         return forecasts.size();
     }
+
+    /**
+     *
+     * @param forecasts set the forecast list to the LiveData
+     */
 
     public void setForecasts(List<Forecast>forecasts){
         this.forecasts = forecasts;
         notifyDataSetChanged();
     }
 
-
+    /**
+     *  ViewHolder class to for binding layout to xml file
+     */
 
     class ViewHolder extends RecyclerView.ViewHolder {
 

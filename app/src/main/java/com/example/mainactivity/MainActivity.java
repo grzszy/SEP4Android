@@ -25,8 +25,17 @@ import androidx.appcompat.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity {
 
+
+    /**
+     * @author Jakob Hansen
+     */
     Toolbar toolbar;
     View view;
+
+    /**
+     *  onCreate instantiate the tablayout and viewpager
+     * @param savedInstanceState
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -55,21 +65,33 @@ public class MainActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    /**
+     * Method for Google firebase to check if the user is signed in
+     */
+
     private void checkIfSignedIn() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         if (user != null)
-            Toast.makeText(this, "Welcome " + user.getDisplayName(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Welcome ", Toast.LENGTH_SHORT).show();
         else
             startLoginActivity();
     }
+
+    /**
+     * Method to start the current activity
+     */
 
     private void startLoginActivity() {
         startActivity(new Intent(this, SignIn.class));
         finish();
     }
 
-
+    /**
+     * Method to logout of application
+     * @param v takes the view for logout
+     */
 
     public void signOut(View v) {
         AuthUI.getInstance()

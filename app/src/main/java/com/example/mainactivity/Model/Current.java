@@ -3,6 +3,10 @@ package com.example.mainactivity.Model;
 public class Current {
 
 
+    /**
+     * @author Jakob Hansen
+     */
+
     private int CO2_value;
     private double Temp_value;
     private double Humidity_value;

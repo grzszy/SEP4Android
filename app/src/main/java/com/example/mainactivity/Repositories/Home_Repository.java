@@ -18,10 +18,21 @@ import retrofit2.Response;
 
 
 public class Home_Repository {
+
+    /**
+     * @author Mathias Hansen
+     * @author Jakob Hansen
+     * @author Mohammed Marwan
+     */
+
+
     private static Home_Repository instance;
     private MutableLiveData<AveragePeople> averagePeople;
     private MutableLiveData<Current> current;
-    private MutableLiveData<Shaft> shaft;
+
+    /**
+     * Constructor
+     */
 
     private Home_Repository() {
         current = new MutableLiveData<>();

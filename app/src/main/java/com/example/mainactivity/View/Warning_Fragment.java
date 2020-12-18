@@ -17,6 +17,9 @@ import com.example.mainactivity.R;
 
 public class Warning_Fragment extends Fragment {
 
+    /**
+     * @author Jakob Hansen
+     */
 
     EditText editTextTemp;
     EditText editTextCo2;
@@ -30,6 +33,16 @@ public class Warning_Fragment extends Fragment {
     int finalValueHum;
     int finalValueCo2;
     int finalValueTemp;
+
+
+    /**
+     * onCreateView inflate the fragment xml file
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return return the view
+     */
 
     @Nullable
     @Override
@@ -84,16 +97,12 @@ public class Warning_Fragment extends Fragment {
 
         SharedPreferences preferences4 = this.getActivity().getSharedPreferences("people", Context.MODE_PRIVATE);
         final SharedPreferences.Editor editor4 = preferences4.edit();
-
         String valuePeople= editTextPeople.getText().toString();
-
         try {
             finalValuePeople=Integer.parseInt(valuePeople);
         }catch (Exception e){
             e.printStackTrace();
         }
-
-
         buttonWarning.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

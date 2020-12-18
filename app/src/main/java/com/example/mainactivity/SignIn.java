@@ -25,7 +25,16 @@ import java.util.List;
 
 public class SignIn extends AppCompatActivity {
 
+    /**
+     * @author Jakob Hansen
+     */
+
     private static final int RC_SIGN_IN = 42;
+
+    /**
+     * Sets the layout for sign_in_activity
+     * @param savedInstanceState
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,17 +42,18 @@ public class SignIn extends AppCompatActivity {
         setContentView(R.layout.sign_in_activity);
     }
 
-    private void checkIfSignedIn() {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null)
-            goToMainActivity();
-    }
-
+    /**
+     * Method to forward to MainActivity
+     */
     private void goToMainActivity() {
         startActivity(new Intent(this, MainActivity.class));
         finish();
     }
 
+    /**
+     * Method for Google Firebase, Signs the user in.
+     * @param v Takes a view
+     */
     public void signIn(View v) {
         List<AuthUI.IdpConfig> providers = Arrays.asList(
                 new AuthUI.IdpConfig.EmailBuilder().build(),
@@ -57,6 +67,13 @@ public class SignIn extends AppCompatActivity {
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
+    /**
+     * Method to check of the request code and Sign_in code is equal
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -64,6 +81,11 @@ public class SignIn extends AppCompatActivity {
             handleSignInRequest(resultCode);
         }
     }
+
+    /**
+     * Method to handle SignIn or login failure
+     * @param resultCode
+     */
 
     private void handleSignInRequest(int resultCode) {
         if (resultCode == RESULT_OK)

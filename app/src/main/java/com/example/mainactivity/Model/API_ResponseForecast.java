@@ -4,6 +4,14 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class API_ResponseForecast {
+
+
+    /**
+     * @author Mathias Hansen
+     * @author Jakob Hansen
+     */
+
+
     @SerializedName("co2_8")
     @Expose
     private int co2_8;

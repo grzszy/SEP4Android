@@ -8,6 +8,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ServiceGenerator {
 
+    /**
+     * @author Jakob Hansen
+     */
 
     private static Retrofit.Builder retrofitBuilder = new Retrofit.Builder()
 

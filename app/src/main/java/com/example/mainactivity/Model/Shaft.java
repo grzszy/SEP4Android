@@ -3,6 +3,11 @@ package com.example.mainactivity.Model;
 import com.google.gson.annotations.SerializedName;
 
 public class Shaft {
+
+    /**
+     * @author Grzegorz Szyszka
+     */
+
     @SerializedName("shaft")
     private int status;
 

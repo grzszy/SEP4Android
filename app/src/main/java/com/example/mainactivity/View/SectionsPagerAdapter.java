@@ -16,14 +16,28 @@ import com.example.mainactivity.R;
  */
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
+
+    /**
+     * @author Mathias Hansen
+     * @author Jakob Hansen
+     */
+
     @StringRes
     private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2,R.string.tab_text_3,R.string.tab_text_4};
     private final Context mContext;
+
+
 
     public SectionsPagerAdapter(Context context, FragmentManager fm) {
         super(fm);
         mContext = context;
     }
+
+    /**
+     *
+     * @param position get the position of the tab
+     * @return returns the fragment at position
+     */
 
     @Override
     public Fragment getItem(int position) {
@@ -45,11 +59,22 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         return fragment;
     }
 
+    /**
+     *
+     * @param position get the position of the tab
+     * @return returns the name of the fragment
+     */
+
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
         return mContext.getResources().getString(TAB_TITLES[position]);
     }
+
+    /**
+     *
+     * @return returns the number of fragment
+     */
 
     @Override
     public int getCount() {

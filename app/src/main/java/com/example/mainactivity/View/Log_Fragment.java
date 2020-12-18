@@ -21,10 +21,23 @@ import java.util.List;
 
 public class Log_Fragment extends Fragment {
 
+    /**
+     * @author Mathias Hansen
+     * @author Jakob Hansen
+     */
+
+
     RecyclerView recyclerView;
     LogAdapter adapter;
     Log_ViewModel log_viewModel;
-
+    /**
+     * onCreateView inflate the fragment xml file
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return return the view
+     */
 
     @Nullable
     @Override

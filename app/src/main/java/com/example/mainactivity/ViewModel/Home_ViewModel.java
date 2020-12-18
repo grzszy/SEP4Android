@@ -8,6 +8,12 @@ import com.example.mainactivity.Model.Current;
 import com.example.mainactivity.Repositories.Home_Repository;
 
 public class Home_ViewModel extends ViewModel {
+
+    /**
+     * @author Mathias Hansen
+     * @author Jakob Hansen
+     */
+
     Home_Repository home_repository;
 
 

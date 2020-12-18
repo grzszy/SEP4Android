@@ -8,6 +8,11 @@ import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface API_Interface {
+/**
+ * @author Mathias Hansen
+ * @author Jakob Hansen
+ */
+
 
     /**
      * Method defining GET action in the API.

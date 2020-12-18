@@ -12,6 +12,11 @@ import com.example.mainactivity.Repositories.Home_Repository;
 
 public class Forecast_ViewModel extends AndroidViewModel {
 
+    /**
+     * @author Mathias Hansen
+     * @author Jakob Hansen
+     */
+
     Forecast_Repository forecast_repository;
 
 

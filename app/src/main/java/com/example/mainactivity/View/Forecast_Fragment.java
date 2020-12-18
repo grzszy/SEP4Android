@@ -20,14 +20,41 @@ import com.example.mainactivity.Model.Forecast;
 import com.example.mainactivity.R;
 import com.example.mainactivity.ViewModel.Forecast_ViewModel;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class Forecast_Fragment extends Fragment {
+
+    /**
+     * @author Mathias Hansen
+     * @author Jakob Hansen
+     */
+
+
+
     Forecast_ViewModel forecastViewModel;
     CalendarView calendarView;
     private LiveData<Forecast> fc;
-    TextView t1; TextView t2; TextView t3; TextView t4;
-    TextView t5; TextView t6; TextView t7; TextView t8;
-    TextView t9; TextView t10; TextView t11; TextView t12;
-    TextView t13; TextView t14; TextView t15; TextView t16;
+    TextView Temp_8; TextView Temp_12; TextView Temp_16; TextView Temp_20;
+    TextView Co2_8; TextView Co2_12; TextView Co2_16; TextView Co2_20;
+    TextView Humidity_8; TextView Humidity_12; TextView Humidity_16; TextView Humidity_20;
+    TextView NumberOfPassengers_8; TextView NumberOfPassengers_12; TextView NumberOfPassengers_16; TextView NumberOfPassengers_20;
+
+
+    int day;
+
+    Calendar cal = Calendar.getInstance();
+    int current_day = cal.get(Calendar.DAY_OF_MONTH);
+
+    /**
+     * onCreateView inflate the fragment xml file
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return return the view
+     */
 
 
     @Nullable
@@ -35,10 +62,10 @@ public class Forecast_Fragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.forecast_fragment, container, false);
         calendarView = v.findViewById(R.id.calendarView);
-        t1 = v.findViewById(R.id.t8); t2 = v.findViewById(R.id.t12); t3 = v.findViewById(R.id.t16); t4 = v.findViewById(R.id.t20);
-        t5 = v.findViewById(R.id.c8); t6 = v.findViewById(R.id.c12); t7 = v.findViewById(R.id.c16); t8 = v.findViewById(R.id.c20);
-        t9 = v.findViewById(R.id.h8); t10 = v.findViewById(R.id.h12); t11 = v.findViewById(R.id.h16); t12 = v.findViewById(R.id.h20);
-        t13 = v.findViewById(R.id.p8); t14 = v.findViewById(R.id.p12); t15 = v.findViewById(R.id.p16); t16 = v.findViewById(R.id.p20);
+        Temp_8 = v.findViewById(R.id.t8); Temp_12 = v.findViewById(R.id.t12); Temp_16 = v.findViewById(R.id.t16); Temp_20 = v.findViewById(R.id.t20);
+        Co2_8 = v.findViewById(R.id.c8); Co2_12 = v.findViewById(R.id.c12); Co2_16 = v.findViewById(R.id.c16); Co2_20 = v.findViewById(R.id.c20);
+        Humidity_8 = v.findViewById(R.id.h8); Humidity_12 = v.findViewById(R.id.h12); Humidity_16 = v.findViewById(R.id.h16); Humidity_20 = v.findViewById(R.id.h20);
+        NumberOfPassengers_8 = v.findViewById(R.id.p8); NumberOfPassengers_12 = v.findViewById(R.id.p12); NumberOfPassengers_16 = v.findViewById(R.id.p16); NumberOfPassengers_20 = v.findViewById(R.id.p20);
 
         forecastViewModel = new ViewModelProvider(this).get(Forecast_ViewModel.class);
         forecastViewModel.getForecast().observe(getActivity(), new Observer<Forecast>() {
@@ -46,33 +73,65 @@ public class Forecast_Fragment extends Fragment {
             public void onChanged(Forecast forecast) {
                 if (forecastViewModel.getForecast() != null) {
                     fc = forecastViewModel.getForecast();
-                    Forecast_Fragment.this.t1.setText(fc.getValue().getTemp_8() + "°C");
-                    Forecast_Fragment.this.t2.setText(fc.getValue().getTemp_12() + "°C");
-                    Forecast_Fragment.this.t3.setText(fc.getValue().getTemp_16() + "°C");
-                    Forecast_Fragment.this.t4.setText(fc.getValue().getTemp_20() + "°C");
 
-                    Forecast_Fragment.this.t5.setText(fc.getValue().getCo2_8() + " ppm");
-                    Forecast_Fragment.this.t6.setText(fc.getValue().getCo2_12() + " ppm");
-                    Forecast_Fragment.this.t7.setText(fc.getValue().getCo2_16() + " ppm");
-                    Forecast_Fragment.this.t8.setText(fc.getValue().getCo2_20() + " ppm");
+                    if (current_day == day +1){
 
-                    Forecast_Fragment.this.t9.setText(fc.getValue().getHumidity_8() + "%");
-                    Forecast_Fragment.this.t10.setText(fc.getValue().getHumidity_12() + "%");
-                    Forecast_Fragment.this.t11.setText(fc.getValue().getHumidity_16() + "%");
-                    Forecast_Fragment.this.t12.setText(fc.getValue().getHumidity_20() + "%");
+                        Forecast_Fragment.this.Temp_8.setText(fc.getValue().getTemp_8() + "°C");
+                        Forecast_Fragment.this.Temp_12.setText(fc.getValue().getTemp_12() + "°C");
+                        Forecast_Fragment.this.Temp_16.setText(fc.getValue().getTemp_16() + "°C");
+                        Forecast_Fragment.this.Temp_20.setText(fc.getValue().getTemp_20() + "°C");
 
-                    Forecast_Fragment.this.t13.setText(fc.getValue().getNumberOfPassengers_8() + "/h");
-                    Forecast_Fragment.this.t14.setText(fc.getValue().getNumberOfPassengers_12() + "/h");
-                    Forecast_Fragment.this.t15.setText(fc.getValue().getNumberOfPassengers_16() + "/h");
-                    Forecast_Fragment.this.t16.setText(fc.getValue().getNumberOfPassengers_20() + "/h");
+                        Forecast_Fragment.this.Co2_8.setText(fc.getValue().getCo2_8() + " ppm");
+                        Forecast_Fragment.this.Co2_12.setText(fc.getValue().getCo2_12() + " ppm");
+                        Forecast_Fragment.this.Co2_16.setText(fc.getValue().getCo2_16() + " ppm");
+                        Forecast_Fragment.this.Co2_20.setText(fc.getValue().getCo2_20() + " ppm");
+
+                        Forecast_Fragment.this.Humidity_8.setText(fc.getValue().getHumidity_8() + "%");
+                        Forecast_Fragment.this.Humidity_12.setText(fc.getValue().getHumidity_12() + "%");
+                        Forecast_Fragment.this.Humidity_16.setText(fc.getValue().getHumidity_16() + "%");
+                        Forecast_Fragment.this.Humidity_20.setText(fc.getValue().getHumidity_20() + "%");
+
+                        Forecast_Fragment.this.NumberOfPassengers_8.setText(fc.getValue().getNumberOfPassengers_8() + "/h");
+                        Forecast_Fragment.this.NumberOfPassengers_12.setText(fc.getValue().getNumberOfPassengers_12() + "/h");
+                        Forecast_Fragment.this.NumberOfPassengers_16.setText(fc.getValue().getNumberOfPassengers_16() + "/h");
+                        Forecast_Fragment.this.NumberOfPassengers_20.setText(fc.getValue().getNumberOfPassengers_20() + "/h");
+
+                    }
+
+
+
+                    Forecast_Fragment.this.Temp_8.setText(fc.getValue().getTemp_8() + "°C");
+                    Forecast_Fragment.this.Temp_12.setText(fc.getValue().getTemp_12() + "°C");
+                    Forecast_Fragment.this.Temp_16.setText(fc.getValue().getTemp_16() + "°C");
+                    Forecast_Fragment.this.Temp_20.setText(fc.getValue().getTemp_20() + "°C");
+
+                    Forecast_Fragment.this.Co2_8.setText(fc.getValue().getCo2_8() + " ppm");
+                    Forecast_Fragment.this.Co2_12.setText(fc.getValue().getCo2_12() + " ppm");
+                    Forecast_Fragment.this.Co2_16.setText(fc.getValue().getCo2_16() + " ppm");
+                    Forecast_Fragment.this.Co2_20.setText(fc.getValue().getCo2_20() + " ppm");
+
+                    Forecast_Fragment.this.Humidity_8.setText(fc.getValue().getHumidity_8() + "%");
+                    Forecast_Fragment.this.Humidity_12.setText(fc.getValue().getHumidity_12() + "%");
+                    Forecast_Fragment.this.Humidity_16.setText(fc.getValue().getHumidity_16() + "%");
+                    Forecast_Fragment.this.Humidity_20.setText(fc.getValue().getHumidity_20() + "%");
+
+                    Forecast_Fragment.this.NumberOfPassengers_8.setText(fc.getValue().getNumberOfPassengers_8() + "/h");
+                    Forecast_Fragment.this.NumberOfPassengers_12.setText(fc.getValue().getNumberOfPassengers_12() + "/h");
+                    Forecast_Fragment.this.NumberOfPassengers_16.setText(fc.getValue().getNumberOfPassengers_16() + "/h");
+                    Forecast_Fragment.this.NumberOfPassengers_20.setText(fc.getValue().getNumberOfPassengers_20() + "/h");
 
                 }
             }
         });
+
+
+
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 String date = year + "-" + (month + 1) + "-" + dayOfMonth;
+                day = dayOfMonth;
+
                 forecastViewModel.updateForecast(date);
 
             }

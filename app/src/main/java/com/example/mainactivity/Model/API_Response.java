@@ -7,6 +7,10 @@ import com.google.gson.annotations.SerializedName;
 
 public class API_Response {
 
+    /**
+     * @author Mathias Hansen
+     * @author Jakob Hansen
+     */
 
     @SerializedName("CO2_value")
     @Expose
@@ -48,16 +52,6 @@ public class API_Response {
     public AveragePeople getAveragePeople(){
         return new AveragePeople(averageNumberOfPeople);
     }
-
-    /**
-     * Method defining POST action from API_Interface.
-     * @param status boolean (true - shaft on, false - shaft off).
-     * @return Shaft object with specified status.
-     */
-    public Shaft postShaft(boolean status){
-        return new Shaft(shaft);
-    }
-
 
 
 }
